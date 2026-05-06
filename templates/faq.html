@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <meta name="description" content="Frequently asked questions about homeopathic treatment at Homeolinks Clinic Vadodara. Learn about safety, effectiveness, consultation process, and treatment duration.">
+</head>
+
+<style>
+.section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+}
+
+.faq {
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.answer {
+    display: none;
+    padding-top: 10px;
+    color: #444;
+}
+</style>
+
+<!-- TITLE -->
+<div class="section">
+    <h1>Frequently Asked Questions – Homeopathic Treatment</h1>
+
+    <p>
+        Find answers to common questions about homeopathy, treatment process, and consultations at Homeolinks Clinic Vadodara.
+    </p>
+</div>
+
+<!-- FAQ -->
+<div class="faq-container">
+
+    <div class="faq" onclick="toggle(this)">
+        <b>What is homeopathy and how does it work?</b>
+        <div class="answer">
+            Homeopathy is a natural system of medicine that stimulates the body’s healing ability. It treats the root cause of disease rather than just symptoms.
+        </div>
+    </div>
+
+    <div class="faq" onclick="toggle(this)">
+        <b>Is homeopathic treatment safe?</b>
+        <div class="answer">
+            Yes, homeopathy is completely safe and has no side effects. It is suitable for children, adults, and elderly patients.
+        </div>
+    </div>
+
+    <div class="faq" onclick="toggle(this)">
+        <b>What conditions can be treated with homeopathy?</b>
+        <div class="answer">
+            Homeopathy can effectively treat chronic diseases such as skin disorders, allergies, asthma, arthritis, PCOS, thyroid issues, and stress-related conditions.
+        </div>
+    </div>
+
+    <div class="faq" onclick="toggle(this)">
+        <b>How long does homeopathic treatment take?</b>
+        <div class="answer">
+            Treatment duration depends on the nature and duration of the disease. Chronic conditions may take longer, but results are long-lasting.
+        </div>
+    </div>
+
+    <div class="faq" onclick="toggle(this)">
+        <b>Do homeopathic medicines have side effects?</b>
+        <div class="answer">
+            No, homeopathic medicines are gentle and safe, with no harmful side effects when prescribed correctly.
+        </div>
+    </div>
+
+    <div class="faq" onclick="toggle(this)">
+        <b>Can I take homeopathy along with other medicines?</b>
+        <div class="answer">
+            Yes, homeopathy can be taken alongside conventional medicines. However, proper guidance from a qualified doctor is recommended.
+        </div>
+    </div>
+
+    <div class="faq" onclick="toggle(this)">
+        <b>Do you provide online consultation?</b>
+        <div class="answer">
+            Yes, we offer both online and in-clinic consultations, allowing patients from anywhere to receive treatment.
+        </div>
+    </div>
+
+</div>
+
+<!-- CTA -->
+<div class="section">
+    <h2>Still have questions?</h2>
+    <p>Consult our expert homeopathic doctor in Vadodara for personalized guidance.</p>
+
+    <a href="/book" style="background:#2e7d32;color:white;padding:12px 25px;text-decoration:none;">
+        Book Appointment
+    </a>
+</div>
+
+<!-- SCRIPT -->
+<script>
+function toggle(element) {
+    let answer = element.querySelector(".answer");
+
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+    } else {
+        answer.style.display = "block";
+    }
+}
+</script>
+
+{% endblock %}

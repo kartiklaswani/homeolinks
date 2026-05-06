@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <meta name="description" content="Read health blogs from Homeolinks Homeopathic Clinic Vadodara. Learn about homeopathy treatment for acne, PCOS, thyroid, and other chronic conditions.">
+</head>
+
+<style>
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section h1 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* CARD */
+.card {
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #2e7d32;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #1b5e20;
+    font-weight: bold;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .card {
+        width: 90%;
+    }
+}
+
+</style>
+
+<div class="section">
+    <h1>Health Blog – Homeolinks Clinic</h1>
+
+    <p>
+        Explore articles on homeopathic treatment, natural healing, and wellness.
+    </p>
+
+    <div class="grid">
+
+        {% for post in posts %}
+        <div class="card">
+            <h3>{{ post.title }}</h3>
+            <a href="/blog/{{ post.url }}">Read More →</a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

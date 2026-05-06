@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+<meta name="description" content="Homeolinks Homeopathic Clinic in Vadodara offers natural and effective treatment for chronic diseases, skin issues, allergies, hormonal disorders and more.">
+</head>
+
+<style>
+
+/* SLIDER */
+.slider {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.55);
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    width: 90%;
+}
+
+.overlay h1 {
+    font-size: 20px;
+}
+
+.overlay p {
+    font-size: 14px;
+}
+
+/* BUTTON */
+.btn {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* SECTION */
+.section {
+    padding: 30px 15px;
+    text-align: center;
+}
+
+.section h2 {
+    color: #2e7d32;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* CARD */
+.card {
+    width: 90%;
+    margin: 10px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    color: #2e7d32;
+}
+
+/* TESTIMONIAL */
+.testimonial-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.testimonial {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-left: 5px solid #2e7d32;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.testimonial.active {
+    display: block;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+
+    .slider {
+        height: 480px;
+    }
+
+    .overlay h1 {
+        font-size: 32px;
+    }
+
+    .overlay p {
+        font-size: 18px;
+    }
+
+    .grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        width: 260px;
+        margin: 10px;
+    }
+}
+
+</style>
+
+<!-- SLIDER -->
+<div class="slider">
+
+    <div class="slide active">
+        <img src="/static/images/hero1.webp">
+    </div>
+
+    <div class="slide">
+        <img src="/static/images/hero2.webp">
+    </div>
+
+    <div class="slide">
+        <img src="/static/images/hero3.webp">
+    </div>
+
+    <div class="overlay">
+        <h1>Trusted Homeopathic Clinic in Vadodara</h1>
+        <p>Safe • Gentle • Effective Healing Since 2002</p>
+        <a href="/book" class="btn">Book Appointment</a>
+    </div>
+
+</div>
+
+<!-- INTRO -->
+<div class="section">
+    <h2>Natural Healing with Personalized Care</h2>
+    <p>We treat the root cause of disease with safe and effective homeopathy.</p>
+</div>
+
+<!-- CONDITIONS -->
+<div class="section">
+    <h2>Conditions We Treat</h2>
+
+    <div class="grid">
+
+        <a href="/blog/acne-blog" class="card">
+            <img src="/static/images/skin.webp">
+            <h3>Skin Diseases</h3>
+            <p>Acne, eczema, psoriasis</p>
+        </a>
+
+        <a href="/blog/allergy-blog" class="card">
+            <img src="/static/images/allergy.webp">
+            <h3>Allergies</h3>
+            <p>Sinus, asthma</p>
+        </a>
+
+        <a href="/blog/arthritis-blog" class="card">
+            <img src="/static/images/joint.webp">
+            <h3>Joint Pain</h3>
+            <p>Arthritis, back pain</p>
+        </a>
+
+        <a href="/blog/pcos-blog" class="card">
+            <img src="/static/images/hormone.webp">
+            <h3>Hormonal Issues</h3>
+            <p>PCOS, thyroid</p>
+        </a>
+
+        <a href="/blog/acidity-blog" class="card">
+            <img src="/static/images/digestive.webp">
+            <h3>Digestive Issues</h3>
+            <p>Acidity, IBS</p>
+        </a>
+
+        <a href="/blog/anxiety-blog" class="card">
+            <img src="/static/images/stress.webp">
+            <h3>Stress & Anxiety</h3>
+            <p>Sleep, anxiety</p>
+        </a>
+
+        <a href="/blog/children-blog" class="card">
+            <img src="/static/images/child.webp">
+            <h3>Children’s Diseases</h3>
+            <p>Safe care for kids</p>
+        </a>
+
+    </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="section">
+    <h2>Why Choose Homeopathy?</h2>
+
+    <ul style="list-style:none;">
+        <li>✔ No side effects</li>
+        <li>✔ Safe for all ages</li>
+        <li>✔ Treats root cause</li>
+        <li>✔ Long-term healing</li>
+    </ul>
+</div>
+
+<!-- TESTIMONIAL -->
+<div class="section">
+    <h2>What Our Patients Say</h2>
+
+    <div class="testimonial-container">
+
+        <div class="testimonial active">
+            <p>“I had chronic skin issues and saw major improvement.”</p>
+        </div>
+
+        <div class="testimonial">
+            <p>“My joint pain reduced and I feel active again.”</p>
+        </div>
+
+        <div class="testimonial">
+            <p>“PCOS improved naturally with homeopathy.”</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="section">
+    <h2>Start Your Healing Journey Today</h2>
+    <a href="/book" class="btn">Book Appointment</a>
+</div>
+
+<!-- SLIDER SCRIPT -->
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function showSlides() {
+    slides.forEach(s => s.classList.remove("active"));
+
+    index++;
+    if (index >= slides.length) index = 0;
+
+    slides[index].classList.add("active");
+
+    setTimeout(showSlides, 4000);
+}
+setTimeout(showSlides, 4000);
+</script>
+
+<!-- TESTIMONIAL SCRIPT -->
+<script>
+let tIndex = 0;
+let testimonials = document.querySelectorAll(".testimonial");
+
+function showTestimonials() {
+    testimonials.forEach(t => t.classList.remove("active"));
+
+    tIndex++;
+    if (tIndex >= testimonials.length) tIndex = 0;
+
+    testimonials[tIndex].classList.add("active");
+
+    setTimeout(showTestimonials, 4000);
+}
+setTimeout(showTestimonials, 4000);
+</script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+.box {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn {
+    background: #2e7d32;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+}
+</style>
+
+<div class="section">
+
+<div class="box">
+
+<h2>Appointment Confirmed ✅</h2>
+
+<p><strong>Name:</strong> {{name}}</p>
+<p><strong>Date:</strong> {{date}}</p>
+<p><strong>Time:</strong> {{time}}</p>
+
+<p>Please click below to notify clinic on WhatsApp.</p>
+
+<a href="{{whatsapp_url}}" class="btn">Notify Clinic on WhatsApp</a>
+
+<br><br>
+
+<a href="/" class="btn">Back to Home</a>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+<meta name="description" content="Homeolinks Clinic offers expert homeopathic treatment in Vadodara for skin diseases, allergies, asthma, PCOS, thyroid, arthritis and more.">
+</head>
+
+<style>
+.section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    margin: 15px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: #2e7d32;
+}
+
+.card a {
+    text-decoration: none;
+    color: #2e7d32;
+}
+</style>
+
+<!-- TITLE -->
+<div class="section">
+    <h1>Homeopathic Treatment in Vadodara</h1>
+    <p>We provide natural and personalized treatment for a wide range of health conditions.</p>
+</div>
+
+<!-- CONDITIONS -->
+<div class="section">
+    <h2>Conditions We Treat</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Skin Diseases</h3>
+        </div>
+
+        <div class="card">
+            <h3>Allergies & Respiratory</h3>
+        </div>
+
+        <div class="card">
+            <h3>Joint Problems</h3>
+        </div>
+
+        <div class="card">
+            <h3>Hormonal Disorders</h3>
+        </div>
+
+        <div class="card">
+            <h3>Digestive Issues</h3>
+        </div>
+
+        <div class="card">
+            <h3>Stress & Lifestyle</h3>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- BLOG LINKS (NEW SEO SECTION) -->
+<div class="section">
+    <h2>Health Articles & Guides</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3><a href="/blog/acne-blog">Acne Treatment Guide</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/pcos-blog">PCOS Guide</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/thyroid-blog">Thyroid Guide</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/hairfall-blog">Hair Fall Treatment</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/eczema-blog">Eczema Treatment</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/allergy-blog">Allergy & Sinus</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/asthma-blog">Asthma Treatment</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/anxiety-blog">Stress & Anxiety</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/acidity-blog">Acidity Treatment</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/periods-blog">Irregular Periods</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/arthritis-blog">Joint Pain</a></h3>
+        </div>
+
+        <div class="card">
+            <h3><a href="/blog/children-blog">Homeopathy for Children</a></h3>
+        </div>
+
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="section">
+    <h2>Consult Today</h2>
+    <a href="/book" style="background:#2e7d32;color:white;padding:12px 25px;text-decoration:none;">
+        Book Appointment
+    </a>
+</div>
+
+{% endblock %}

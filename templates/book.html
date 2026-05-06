@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+<meta name="description" content="Book homeopathy appointment in Vadodara with Homeolinks Clinic. Choose your convenient time slot for consultation.">
+</head>
+
+<style>
+
+.container-box {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.container-box h1 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus {
+    border-color: #2e7d32;
+    outline: none;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    background: #2e7d32;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+/* SLOT BOX */
+.slots {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.slot {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #2e7d32;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.slot:hover {
+    background: #2e7d32;
+    color: white;
+}
+
+.selected {
+    background: #2e7d32;
+    color: white;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .container-box {
+        width: 90%;
+    }
+}
+
+</style>
+
+<div class="section">
+
+<div class="container-box">
+
+<h1>Book Appointment</h1>
+
+<form method="POST" action="/book">
+
+<div class="form-group">
+<label>Name</label>
+<input type="text" name="name" required>
+</div>
+
+<div class="form-group">
+<label>Phone Number</label>
+<input type="text" name="phone" required>
+</div>
+
+<div class="form-group">
+<label>Select Date</label>
+<input type="date" name="date" id="date" required>
+</div>
+
+<div class="form-group">
+<label>Select Time Slot</label>
+<div class="slots" id="slots"></div>
+<input type="hidden" name="time" id="time">
+</div>
+
+<div class="form-group">
+<label>Message (Optional)</label>
+<textarea name="message"></textarea>
+</div>
+
+<button type="submit">Confirm Appointment</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("date").addEventListener("change", function() {
+
+    let date = this.value;
+
+    fetch("/get_slots", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({date: date})
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        let slotsDiv = document.getElementById("slots");
+        slotsDiv.innerHTML = "";
+
+        data.forEach(slot => {
+
+            let div = document.createElement("div");
+            div.className = "slot";
+            div.innerText = slot;
+
+            div.onclick = function() {
+
+                document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
+                div.classList.add("selected");
+
+                document.getElementById("time").value = slot;
+            };
+
+            slotsDiv.appendChild(div);
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}
