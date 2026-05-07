@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify, redirect, session, url_for
 from datetime import datetime
 import sqlite3
+import os
 
 app = Flask(__name__)
+app.secret_key = "homeolinks_secret_key"
 
 # ---------------- DATABASE ----------------
 def init_db():
@@ -62,29 +64,36 @@ init_db()
 def home():
     return render_template('home.html')
 
+
 @app.route('/services')
 def services():
     return render_template('services.html')
+
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
 
 @app.route('/faq')
 def faq():
     return render_template('faq.html')
 
+
 @app.route('/testimonials')
 def testimonials():
     return render_template('testimonials.html')
 
+
 @app.route('/blog/<post>')
 def blog(post):
     return render_template(post + ".html")
+
 
 # ---------------- BOOK APPOINTMENT ----------------
 @app.route('/book', methods=['GET', 'POST'])
@@ -121,6 +130,7 @@ def book():
 
         if existing_appointment:
             conn.close()
+
             return """
             <h2 style='color:red; text-align:center; margin-top:50px;'>
             Sorry, this appointment slot is already booked.
@@ -146,6 +156,7 @@ def book():
         )
 
     return render_template('book.html')
+
 
 # ---------------- TIME SLOTS ----------------
 @app.route('/get_slots', methods=['POST'])
@@ -188,11 +199,85 @@ def get_slots():
     return jsonify(available)
 
 
+# ---------------- ADMIN LOGIN ----------------
+@app.route('/admin-login', methods=['GET', 'POST'])
+def admin_login():
+
+    if request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+
+        # CHANGE THESE LATER
+        if username == "admin" and password == "homeolinks123":
+
+            session['admin_logged_in'] = True
+            return redirect('/admin')
+
+        return """
+        <h2 style='color:red; text-align:center; margin-top:50px;'>
+        Invalid username or password
+        </h2>
+        """
+
+    return render_template('login.html')
+
+
+# ---------------- ADMIN DASHBOARD ----------------
+@app.route('/admin')
+def admin():
+
+    if not session.get('admin_logged_in'):
+        return redirect('/admin-login')
+
+    conn = sqlite3.connect('appointments.db')
+    c = conn.cursor()
+
+    c.execute("""
+        SELECT * FROM appointments
+        ORDER BY date ASC, time ASC
+    """)
+
+    appointments = c.fetchall()
+
+    conn.close()
+
+    return render_template(
+        'admin.html',
+        appointments=appointments
+    )
+
+
+# ---------------- DELETE APPOINTMENT ----------------
+@app.route('/delete-appointment/<int:id>')
+def delete_appointment(id):
+
+    if not session.get('admin_logged_in'):
+        return redirect('/admin-login')
+
+    conn = sqlite3.connect('appointments.db')
+    c = conn.cursor()
+
+    c.execute(
+        "DELETE FROM appointments WHERE id=?",
+        (id,)
+    )
+
+    conn.commit()
+    conn.close()
+
+    return redirect('/admin')
+
+
+# ---------------- LOGOUT ----------------
+@app.route('/logout')
+def logout():
+
+    session.pop('admin_logged_in', None)
+    return redirect('/')
 
 
 # ---------------- RUN ----------------
-import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)

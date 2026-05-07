@@ -1,14 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Panel</title>
-</head>
+{% extends "base.html" %}
 
-<body>
-    <h1>All Appointments</h1>
+{% block content %}
 
-    <table border="1">
+<style>
+
+.container{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:12px;
+    border:1px solid #ddd;
+    text-align:left;
+}
+
+th{
+    background:#2e7d32;
+    color:white;
+}
+
+.delete-btn{
+    color:red;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.logout{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#2e7d32;
+    color:white;
+    padding:10px 18px;
+    text-decoration:none;
+    border-radius:6px;
+}
+
+</style>
+
+<div class="container">
+
+    <h2>Upcoming Appointments</h2>
+
+    <a href="/logout" class="logout">
+        Logout
+    </a>
+
+    <table>
+
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Phone</th>
             <th>Date</th>
@@ -17,21 +65,33 @@
             <th>Action</th>
         </tr>
 
-        {% for row in data %}
+        {% for a in appointments %}
+
         <tr>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
-            <td>{{ row[5] }}</td>
+
+            <td>{{ a[0] }}</td>
+            <td>{{ a[1] }}</td>
+            <td>{{ a[2] }}</td>
+            <td>{{ a[3] }}</td>
+            <td>{{ a[4] }}</td>
+            <td>{{ a[5] }}</td>
+
             <td>
-                <a href="/delete/{{ row[0] }}">Cancel</a>
+                <a
+                    href="/delete-appointment/{{ a[0] }}"
+                    class="delete-btn"
+                    onclick="return confirm('Delete this appointment?')"
+                >
+                    Delete
+                </a>
             </td>
+
         </tr>
+
         {% endfor %}
+
     </table>
 
-    <br>
-    <a href="/">Back</a>
-</body>
-</html>
+</div>
+
+{% endblock %}
