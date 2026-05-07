@@ -120,12 +120,12 @@ def book():
         conn.close()
 
         return render_template(
-            'confirmation.html',
-            name=name,
-            date=date,
-            time=time
-        )
-
+           "confirmation.html",
+           name=name,
+           phone=phone,
+           date=date,
+           time=time
+    )
     return render_template('book.html')
 
 # ---------------- TIME SLOTS ----------------
