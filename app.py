@@ -172,8 +172,6 @@ def get_slots():
 
 
 # ---------------- RUN ----------------
-if __name__ == '__main__':
-    
 import os
 
 if __name__ == "__main__":
