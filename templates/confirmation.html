@@ -10,6 +10,7 @@
     padding: 30px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
 }
 
 .btn {
@@ -19,34 +20,43 @@
     text-decoration: none;
     display: inline-block;
     margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #256428;
 }
 </style>
 
 <div class="section">
 
-<div class="box">
+    <div class="box">
 
-<h2>Appointment Confirmed ✅</h2>
+        <h2>Appointment Confirmed ✅</h2>
 
-<p><strong>Name:</strong> {{name}}</p>
-<p><strong>Date:</strong> {{date}}</p>
-<p><strong>Time:</strong> {{time}}</p>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Phone:</strong> {{ phone }}</p>
+        <p><strong>Date:</strong> {{ date }}</p>
+        <p><strong>Time:</strong> {{ time }}</p>
 
-<p>Please click below to notify clinic on WhatsApp.</p>
+        <p>Please click below to notify clinic on WhatsApp.</p>
 
-<a 
-    href="https://wa.me/919313575730?text=Hello%20Doctor,%20I%20have%20booked%20an%20appointment%20through%20Homeolinks.%20My%20details%20are:%0A%0AName:%20{{ name }}%0APhone:%20{{ phone }}%0ADate:%20{{ date }}%0ATime:%20{{ time }}"
-    target="_blank"
-    class="btn btn-success"
->
-    Notify Clinic on WhatsApp
-</a>
+        <button 
+            class="btn"
+            onclick="window.open('https://wa.me/919313575730?text=Hello Doctor, I have booked an appointment through Homeolinks.%0A%0AName: {{ name }}%0APhone: {{ phone }}%0ADate: {{ date }}%0ATime: {{ time }}', '_blank')"
+        >
+            Notify Clinic on WhatsApp
+        </button>
 
-<br><br>
+        <br><br>
 
-<a href="/" class="btn">Back to Home</a>
+        <a href="/" class="btn">Back to Home</a>
 
-</div>
+    </div>
 
 </div>
 
