@@ -111,6 +111,24 @@ def book():
         conn = sqlite3.connect('appointments.db')
         c = conn.cursor()
 
+        # CHECK IF SLOT ALREADY BOOKED
+        c.execute(
+            "SELECT * FROM appointments WHERE date=? AND time=?",
+            (date, time)
+        )
+
+        existing_appointment = c.fetchone()
+
+        if existing_appointment:
+            conn.close()
+            return """
+            <h2 style='color:red; text-align:center; margin-top:50px;'>
+            Sorry, this appointment slot is already booked.
+            Please choose another time.
+            </h2>
+            """
+
+        # SAVE NEW APPOINTMENT
         c.execute(
             "INSERT INTO appointments VALUES(NULL,?,?,?,?,?)",
             (name, phone, date, time, message)
@@ -120,12 +138,13 @@ def book():
         conn.close()
 
         return render_template(
-           "confirmation.html",
-           name=name,
-           phone=phone,
-           date=date,
-           time=time
-    )
+            "confirmation.html",
+            name=name,
+            phone=phone,
+            date=date,
+            time=time
+        )
+
     return render_template('book.html')
 
 # ---------------- TIME SLOTS ----------------
