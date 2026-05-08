@@ -1,21 +1,43 @@
-from flask import Flask, render_template, request, jsonify, redirect, session, url_for
+from flask import Flask, render_template, request, jsonify, redirect, session
 from datetime import datetime
-import sqlite3
+import psycopg2
+from urllib.parse import urlparse
 import os
 
 app = Flask(__name__)
 app.secret_key = "homeolinks_secret_key"
 
+# ---------------- DATABASE CONNECTION ----------------
+DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql://homeolinks_user:NAh4N88Y9GntwwQg9qUpDe2SwNlkm65r@dpg-d7v1rt7avr4c739ls3gg-a.singapore-postgres.render.com/homeolinks"
+)
+
+def get_db_connection():
+
+    result = urlparse(DATABASE_URL)
+
+    conn = psycopg2.connect(
+        database=result.path[1:],
+        user=result.username,
+        password=result.password,
+        host=result.hostname,
+        port=result.port
+    )
+
+    return conn
+
+
 # ---------------- DATABASE ----------------
 def init_db():
 
-    conn = sqlite3.connect('appointments.db')
+    conn = get_db_connection()
     c = conn.cursor()
 
-    # appointments
+    # appointments table
     c.execute('''
         CREATE TABLE IF NOT EXISTS appointments (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             name TEXT,
             phone TEXT,
             date TEXT,
@@ -24,29 +46,24 @@ def init_db():
         )
     ''')
 
-    # patients
+    # patients table
     c.execute('''
         CREATE TABLE IF NOT EXISTS patients (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             name TEXT,
             age TEXT,
             gender TEXT,
             phone TEXT,
             case_details TEXT,
-            created_at TEXT
+            created_at TEXT,
+            status TEXT DEFAULT 'active'
         )
     ''')
 
-    # safely add status column
-    try:
-        c.execute("ALTER TABLE patients ADD COLUMN status TEXT DEFAULT 'active'")
-    except:
-        pass
-
-    # followups
+    # followups table
     c.execute('''
         CREATE TABLE IF NOT EXISTS followups (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
             patient_id INTEGER,
             datetime TEXT,
             notes TEXT,
@@ -56,6 +73,7 @@ def init_db():
 
     conn.commit()
     conn.close()
+
 
 init_db()
 
@@ -117,12 +135,12 @@ def book():
         if date == today and time <= now:
             return "Cannot book past time"
 
-        conn = sqlite3.connect('appointments.db')
+        conn = get_db_connection()
         c = conn.cursor()
 
         # CHECK IF SLOT ALREADY BOOKED
         c.execute(
-            "SELECT * FROM appointments WHERE date=? AND time=?",
+            "SELECT * FROM appointments WHERE date=%s AND time=%s",
             (date, time)
         )
 
@@ -140,7 +158,11 @@ def book():
 
         # SAVE NEW APPOINTMENT
         c.execute(
-            "INSERT INTO appointments VALUES(NULL,?,?,?,?,?)",
+            """
+            INSERT INTO appointments
+            (name, phone, date, time, message)
+            VALUES (%s, %s, %s, %s, %s)
+            """,
             (name, phone, date, time, message)
         )
 
@@ -182,11 +204,11 @@ def get_slots():
     # Last slot
     slots.append("20:00")
 
-    conn = sqlite3.connect('appointments.db')
+    conn = get_db_connection()
     c = conn.cursor()
 
     c.execute(
-        "SELECT time FROM appointments WHERE date=?",
+        "SELECT time FROM appointments WHERE date=%s",
         (date,)
     )
 
@@ -208,7 +230,6 @@ def admin_login():
         username = request.form['username']
         password = request.form['password']
 
-        # CHANGE THESE LATER
         if username == "admin" and password == "homeolinks123":
 
             session['admin_logged_in'] = True
@@ -230,7 +251,7 @@ def admin():
     if not session.get('admin_logged_in'):
         return redirect('/admin-login')
 
-    conn = sqlite3.connect('appointments.db')
+    conn = get_db_connection()
     c = conn.cursor()
 
     c.execute("""
@@ -255,11 +276,11 @@ def delete_appointment(id):
     if not session.get('admin_logged_in'):
         return redirect('/admin-login')
 
-    conn = sqlite3.connect('appointments.db')
+    conn = get_db_connection()
     c = conn.cursor()
 
     c.execute(
-        "DELETE FROM appointments WHERE id=?",
+        "DELETE FROM appointments WHERE id=%s",
         (id,)
     )
 
