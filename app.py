@@ -8,17 +8,16 @@ app = Flask(__name__)
 app.secret_key = "homeolinks_secret_key"
 
 # ---------------- DATABASE CONNECTION ----------------
-DATABASE_URL = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://homeolinks_user:NAh4N88Y9GntwwQg9qUpDe2SwNlkm65r@dpg-d7v1rt7avr4c739ls3gg-a.singapore-postgres.render.com/homeolinks"
-)
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+print("DATABASE_URL:", DATABASE_URL)
 
 def get_db_connection():
 
     result = urlparse(DATABASE_URL)
 
     conn = psycopg2.connect(
-        database=result.path[1:],
+        dbname=result.path[1:],
         user=result.username,
         password=result.password,
         host=result.hostname,
@@ -26,8 +25,7 @@ def get_db_connection():
     )
 
     return conn
-
-
+    
 # ---------------- DATABASE ----------------
 def init_db():
 
