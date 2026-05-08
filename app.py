@@ -10,7 +10,6 @@ app.secret_key = "homeolinks_secret_key"
 # ---------------- DATABASE CONNECTION ----------------
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
-print("DATABASE_URL:", DATABASE_URL)
 
 def get_db_connection():
 
@@ -25,7 +24,7 @@ def get_db_connection():
     )
 
     return conn
-    
+
 # ---------------- DATABASE ----------------
 def init_db():
 
