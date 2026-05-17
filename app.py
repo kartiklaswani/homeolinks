@@ -311,14 +311,14 @@ def delete_appointment(id):
     message = f'''
 Dear {name},
 
-Your appointment at Homeolinks Clinic scheduled for:
+We are sorry to inform you that your appointment at Homeolinks Clinic scheduled for:
 
 Date: {date}
 Time: {time}
 
 has been cancelled, due to unavoidable circumstances.
 
-Please contact clinic for rescheduling, or book another slot.
+Please contact clinic for rescheduling, or book another slot. Sorry for the inconvenience caused.
 
 Homeolinks Clinic
 '''
