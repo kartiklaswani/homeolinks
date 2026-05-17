@@ -128,9 +128,17 @@ def book():
         # prevent past booking
         if date < today:
             return "Cannot book past date"
+        
+        # Block Sundays
+        selected_day = datetime.strptime(date, "%Y-%m-%d").weekday()
+
+        # Sunday = 6
+        if selected_day == 6:
+            return "Clinic remains closed on Sundays"
 
         if date == today and time <= now:
             return "Cannot book past time"
+            
 
         conn = get_db_connection()
         c = conn.cursor()
