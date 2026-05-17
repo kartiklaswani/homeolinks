@@ -342,7 +342,6 @@ def logout():
     return redirect('/')
 
 # ---------------- DELETE PATIENT ----------------
-# ---------------- DELETE PATIENT ----------------
 @app.route('/delete_patient/<int:id>')
 def delete_patient(id):
 
