@@ -3,142 +3,414 @@
 {% block content %}
 
 <head>
-<meta name="description" content="Homeolinks Clinic offers expert homeopathic treatment in Vadodara for skin diseases, allergies, asthma, PCOS, thyroid, arthritis and more.">
+<meta name="description" content="Homeolinks Homeopathic Clinic in Vadodara offers personalized homeopathic treatment for skin diseases, allergies, asthma, thyroid disorders, PCOS, arthritis, digestive issues and more.">
 </head>
 
 <style>
-.section {
-    padding: 50px 20px;
-    text-align: center;
+
+body{
+    background:#f7faf8;
 }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* HERO */
+
+.hero-section{
+    background:linear-gradient(to right,#f1f8f4,#ffffff);
+    padding:90px 20px;
+    text-align:center;
+    border-radius:0 0 40px 40px;
 }
 
-.card {
-    width: 300px;
-    margin: 15px;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.hero-section h1{
+    color:#1b5e20;
+    font-size:52px;
+    margin-bottom:20px;
 }
 
-.card h3 {
-    color: #2e7d32;
+.hero-section p{
+    color:#555;
+    font-size:20px;
+    max-width:850px;
+    margin:auto;
+    line-height:1.9;
 }
 
-.card a {
-    text-decoration: none;
-    color: #2e7d32;
+/* GENERAL SECTION */
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 20px;
 }
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    color:#1b5e20;
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.section-title p{
+    color:#555;
+    font-size:19px;
+    line-height:1.8;
+    max-width:850px;
+    margin:auto;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px;
+}
+
+/* PREMIUM CARDS */
+
+.card{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(12px);
+    border-radius:24px;
+    padding:35px 30px;
+    text-decoration:none;
+    color:#333;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.35s;
+    border:1px solid rgba(255,255,255,0.5);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.14);
+}
+
+.card h3{
+    color:#1b5e20;
+    margin-bottom:15px;
+    font-size:26px;
+}
+
+.card p{
+    color:#555;
+    line-height:1.8;
+    font-size:16px;
+}
+
+/* TRUST SECTION */
+
+.trust-section{
+    background:white;
+    border-radius:28px;
+    padding:60px 40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.trust-box h3{
+    color:#2e7d32;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.trust-box p{
+    color:#555;
+    font-size:18px;
+}
+
+/* CTA */
+
+.cta-section{
+    background:linear-gradient(to right,#1b5e20,#2e7d32);
+    color:white;
+    text-align:center;
+    padding:80px 30px;
+    border-radius:30px;
+}
+
+.cta-section h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta-section p{
+    font-size:20px;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+.cta-btn{
+    background:white;
+    color:#1b5e20;
+    padding:15px 34px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:17px;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.cta-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero-section{
+        padding:70px 20px;
+    }
+
+    .hero-section h1{
+        font-size:36px;
+    }
+
+    .hero-section p{
+        font-size:17px;
+    }
+
+    .section{
+        padding:70px 18px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .cta-section h2{
+        font-size:32px;
+    }
+
+}
+
 </style>
 
-<!-- TITLE -->
-<div class="section">
-    <h1>Homeopathic Treatment in Vadodara</h1>
-    <p>We provide natural and personalized treatment for a wide range of health conditions.</p>
-</div>
+<!-- HERO -->
+
+<section class="hero-section">
+
+    <h1>
+        Personalized Homeopathic Treatment in Vadodara
+    </h1>
+
+    <p>
+        Homeolinks Homeopathic Clinic provides individualized and holistic homeopathic treatment for chronic and acute health conditions with a focus on root-cause healing, long-term wellness, and compassionate patient care.
+    </p>
+
+</section>
 
 <!-- CONDITIONS -->
-<div class="section">
-    <h2>Conditions We Treat</h2>
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            Conditions We Treat
+        </h2>
+
+        <p>
+            Comprehensive homeopathic care for skin diseases, allergies, hormonal imbalance, digestive disorders, emotional wellness, respiratory conditions, children’s health, and chronic diseases.
+        </p>
+
+    </div>
 
     <div class="grid">
 
         <div class="card">
             <h3>Skin Diseases</h3>
+            <p>
+                Homeopathic treatment for acne, eczema, psoriasis, fungal infections, itching, and chronic skin allergies.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Allergies & Respiratory</h3>
+            <h3>Allergies & Respiratory Care</h3>
+            <p>
+                Personalized care for sinus allergy, dust allergy, allergic asthma, wheezing, and recurrent respiratory problems.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Joint Problems</h3>
+            <h3>Joint & Spine Disorders</h3>
+            <p>
+                Treatment for arthritis, cervical pain, back pain, sciatica, frozen shoulder, and chronic joint stiffness.
+            </p>
         </div>
 
         <div class="card">
             <h3>Hormonal Disorders</h3>
+            <p>
+                Supportive homeopathic management for PCOS, thyroid imbalance, menstrual irregularities, and hormonal wellness.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Digestive Issues</h3>
+            <h3>Digestive Disorders</h3>
+            <p>
+                Care for acidity, IBS, constipation, bloating, gastritis, digestive weakness, and chronic stomach complaints.
+            </p>
         </div>
 
         <div class="card">
-            <h3>Stress & Lifestyle</h3>
+            <h3>Stress & Emotional Wellness</h3>
+            <p>
+                Holistic support for stress, anxiety, sleep problems, emotional imbalance, panic symptoms, and fatigue.
+            </p>
         </div>
 
     </div>
-</div>
 
+</section>
 
-<!-- BLOG LINKS (NEW SEO SECTION) -->
-<div class="section">
-    <h2>Health Articles & Guides</h2>
+<!-- ARTICLES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            Health Articles & Treatment Guides
+        </h2>
+
+        <p>
+            Explore detailed health guides and homeopathic treatment information for various chronic and lifestyle-related health conditions.
+        </p>
+
+    </div>
 
     <div class="grid">
 
-        <div class="card">
-            <h3><a href="/blog/acne-blog">Acne Treatment Guide</a></h3>
-        </div>
+        <a href="/blog/acne-blog" class="card">
+            <h3>Acne Treatment Guide</h3>
+            <p>Homeopathic care for acne, pimples, oily skin, and chronic skin eruptions.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/pcos-blog">PCOS Guide</a></h3>
-        </div>
+        <a href="/blog/pcos-blog" class="card">
+            <h3>PCOS Guide</h3>
+            <p>Understanding PCOS, hormonal imbalance, menstrual irregularities, and homeopathic management.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/thyroid-blog">Thyroid Guide</a></h3>
-        </div>
+        <a href="/blog/thyroid-blog" class="card">
+            <h3>Thyroid Guide</h3>
+            <p>Information about hypothyroidism, hyperthyroidism, metabolism, and thyroid wellness.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/hairfall-blog">Hair Fall Treatment</a></h3>
-        </div>
+        <a href="/blog/hairfall-blog" class="card">
+            <h3>Hair Fall Treatment</h3>
+            <p>Hair thinning, dandruff, alopecia, scalp health, and homeopathic hair wellness.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/eczema-blog">Eczema Treatment</a></h3>
-        </div>
+        <a href="/blog/eczema-blog" class="card">
+            <h3>Eczema Treatment</h3>
+            <p>Chronic eczema, skin allergies, dermatitis, itching, and individualized care.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/allergy-blog">Allergy & Sinus</a></h3>
-        </div>
+        <a href="/blog/allergy-blog" class="card">
+            <h3>Allergy & Sinus Care</h3>
+            <p>Dust allergy, sinus allergy, sneezing, allergic rhinitis, and respiratory sensitivity.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/asthma-blog">Asthma Treatment</a></h3>
-        </div>
+        <a href="/blog/asthma-blog" class="card">
+            <h3>Asthma Treatment</h3>
+            <p>Homeopathic support for asthma, wheezing, breathing difficulty, and respiratory allergies.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/anxiety-blog">Stress & Anxiety</a></h3>
-        </div>
+        <a href="/blog/anxiety-blog" class="card">
+            <h3>Stress & Anxiety</h3>
+            <p>Emotional wellness, stress management, sleep issues, and holistic mental well-being.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/acidity-blog">Acidity Treatment</a></h3>
-        </div>
+        <a href="/blog/acidity-blog" class="card">
+            <h3>Acidity Treatment</h3>
+            <p>Digestive balance for acidity, IBS, gastritis, constipation, and bloating.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/periods-blog">Irregular Periods</a></h3>
-        </div>
+        <a href="/blog/periods-blog" class="card">
+            <h3>Irregular Periods</h3>
+            <p>Menstrual health, hormonal balance, painful periods, and PMS support.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/arthritis-blog">Joint Pain</a></h3>
-        </div>
+        <a href="/blog/arthritis-blog" class="card">
+            <h3>Joint Pain Treatment</h3>
+            <p>Arthritis, cervical pain, sciatica, stiffness, and chronic musculoskeletal care.</p>
+        </a>
 
-        <div class="card">
-            <h3><a href="/blog/children-blog">Homeopathy for Children</a></h3>
+        <a href="/blog/children-blog" class="card">
+            <h3>Homeopathy for Children</h3>
+            <p>Child immunity, allergies, recurrent infections, digestion, and holistic child wellness.</p>
+        </a>
+
+    </div>
+
+</section>
+
+<!-- TRUST -->
+
+<section class="section">
+
+    <div class="trust-section">
+
+        <div class="trust-grid">
+
+            <div class="trust-box">
+                <h3>20+</h3>
+                <p>Years of Clinical Experience</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>2002</h3>
+                <p>Serving Vadodara Since</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Holistic</h3>
+                <p>Individualized Constitutional Treatment</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Trusted</h3>
+                <p>Compassionate Patient-Centered Care</p>
+            </div>
+
         </div>
 
     </div>
-</div>
+
+</section>
 
 <!-- CTA -->
-<div class="section">
-    <h2>Consult Today</h2>
-    <a href="/book" style="background:#2e7d32;color:white;padding:12px 25px;text-decoration:none;">
-        Book Appointment
-    </a>
-</div>
+
+<section class="section">
+
+    <div class="cta-section">
+
+        <h2>
+            Begin Your Healing Journey
+        </h2>
+
+        <p>
+            Consult Homeolinks Homeopathic Clinic for personalized and holistic healthcare with compassionate treatment tailored to your individual needs.
+        </p>
+
+        <a href="/book" class="cta-btn">
+            Book Appointment
+        </a>
+
+    </div>
+
+</section>
 
 {% endblock %}
