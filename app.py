@@ -342,11 +342,27 @@ def logout():
     return redirect('/')
 
 # ---------------- DELETE PATIENT ----------------
+# ---------------- DELETE PATIENT ----------------
 @app.route('/delete_patient/<int:id>')
 def delete_patient(id):
 
     conn = get_db_connection()
     c = conn.cursor()
+
+    # Get patient details first
+    c.execute(
+        "SELECT name, phone FROM patients WHERE id=%s",
+        (id,)
+    )
+
+    patient = c.fetchone()
+
+    if not patient:
+        conn.close()
+        return redirect('/admin')
+
+    name = patient[0]
+    phone = patient[1]
 
     # Soft delete patient
     c.execute(
@@ -357,8 +373,24 @@ def delete_patient(id):
     conn.commit()
     conn.close()
 
-    return redirect('/admin')
+    # WhatsApp message
+    message = f'''
+Dear {name},
 
+Your patient profile at Homeolinks Clinic has been marked inactive/deleted from our active records.
+
+If this was done by mistake or you wish to continue treatment, kindly contact the clinic.
+
+Homeolinks Clinic
+'''
+
+    import urllib.parse
+
+    encoded_message = urllib.parse.quote(message)
+
+    whatsapp_url = f"https://wa.me/91{phone}?text={encoded_message}"
+
+    return redirect(whatsapp_url)
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
