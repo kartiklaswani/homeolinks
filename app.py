@@ -316,9 +316,9 @@ Your appointment at Homeolinks Clinic scheduled for:
 Date: {date}
 Time: {time}
 
-has been cancelled.
+has been cancelled, due to unavoidable circumstances.
 
-Please book another convenient slot.
+Please contact clinic for rescheduling, or book another slot.
 
 Homeolinks Clinic
 '''
