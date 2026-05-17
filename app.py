@@ -341,6 +341,24 @@ def logout():
     session.pop('admin_logged_in', None)
     return redirect('/')
 
+# ---------------- DELETE PATIENT ----------------
+@app.route('/delete_patient/<int:id>')
+def delete_patient(id):
+
+    conn = get_db_connection()
+    c = conn.cursor()
+
+    # Soft delete patient
+    c.execute(
+        "UPDATE patients SET status='deleted' WHERE id=%s",
+        (id,)
+    )
+
+    conn.commit()
+    conn.close()
+
+    return redirect('/admin')
+
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
