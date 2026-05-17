@@ -275,15 +275,30 @@ def admin():
 
 
 # ---------------- DELETE APPOINTMENT ----------------
-@app.route('/delete-appointment/<int:id>')
+@app.route('/delete_appointment/<int:id>')
 def delete_appointment(id):
-
-    if not session.get('admin_logged_in'):
-        return redirect('/admin-login')
 
     conn = get_db_connection()
     c = conn.cursor()
 
+    # Get appointment details BEFORE deleting
+    c.execute(
+        "SELECT name, phone, date, time FROM appointments WHERE id=%s",
+        (id,)
+    )
+
+    appointment = c.fetchone()
+
+    if not appointment:
+        conn.close()
+        return redirect('/admin')
+
+    name = appointment[0]
+    phone = appointment[1]
+    date = appointment[2]
+    time = appointment[3]
+
+    # Delete appointment
     c.execute(
         "DELETE FROM appointments WHERE id=%s",
         (id,)
@@ -292,7 +307,31 @@ def delete_appointment(id):
     conn.commit()
     conn.close()
 
-    return redirect('/admin')
+    # WhatsApp message
+    message = f'''
+Dear {name},
+
+Your appointment at Homeolinks Clinic scheduled for:
+
+Date: {date}
+Time: {time}
+
+has been cancelled.
+
+Please book another convenient slot.
+
+Homeolinks Clinic
+'''
+
+    # Remove spaces/special characters
+    import urllib.parse
+
+    encoded_message = urllib.parse.quote(message)
+
+    # Open WhatsApp
+    whatsapp_url = f"https://wa.me/91{phone}?text={encoded_message}"
+
+    return redirect(whatsapp_url)
 
 
 # ---------------- LOGOUT ----------------
