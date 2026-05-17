@@ -2,99 +2,264 @@
 
 {% block content %}
 
-<head>
-    <meta name="description" content="Contact Homeolinks Homeopathic Clinic in Vadodara. Visit Dr. Kartik Aswani for expert homeopathic treatment for chronic diseases, allergies, skin disorders and more.">
-</head>
-
 <style>
-.section {
-    padding: 50px 20px;
-    text-align: center;
+
+.contact-container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-.content {
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.6;
+.hero-section{
+    background:linear-gradient(to right, #f1f8f4, #ffffff);
+    padding:60px 40px;
+    border-radius:18px;
+    margin-bottom:40px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.08);
+    text-align:center;
 }
 
-.box {
-    background: white;
-    padding: 25px;
-    margin: 20px auto;
-    width: 70%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.hero-section h1{
+    color:#1b5e20;
+    font-size:42px;
+    margin-bottom:20px;
 }
+
+.hero-section p{
+    color:#444;
+    font-size:18px;
+    line-height:1.9;
+    max-width:850px;
+    margin:auto;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:40px;
+}
+
+.contact-card{
+    background:white;
+    padding:35px;
+    border-radius:16px;
+    box-shadow:0 3px 14px rgba(0,0,0,0.08);
+}
+
+.contact-card h2{
+    color:#2e7d32;
+    margin-bottom:20px;
+    font-size:28px;
+}
+
+.contact-card p{
+    color:#444;
+    line-height:1.9;
+    font-size:17px;
+    margin-bottom:15px;
+}
+
+.contact-card strong{
+    color:#1b5e20;
+}
+
+.contact-card a{
+    color:#2e7d32;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.map-section{
+    background:white;
+    padding:35px;
+    border-radius:16px;
+    box-shadow:0 3px 14px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+}
+
+.map-section h2{
+    color:#2e7d32;
+    margin-bottom:20px;
+    font-size:30px;
+}
+
+.map-container{
+    overflow:hidden;
+    border-radius:14px;
+}
+
+.cta-section{
+    background:#e8f5e9;
+    text-align:center;
+    padding:50px 30px;
+    border-radius:18px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.08);
+}
+
+.cta-section h2{
+    color:#1b5e20;
+    margin-bottom:15px;
+    font-size:34px;
+}
+
+.cta-section p{
+    color:#444;
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.cta-btn{
+    display:inline-block;
+    background:#2e7d32;
+    color:white;
+    padding:14px 28px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:17px;
+    transition:0.3s;
+}
+
+.cta-btn:hover{
+    background:#1b5e20;
+}
+
+@media(max-width:768px){
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-section{
+        padding:40px 25px;
+    }
+
+    .hero-section h1{
+        font-size:32px;
+    }
+
+    .contact-card{
+        padding:25px;
+    }
+
+}
+
 </style>
 
-<!-- TITLE -->
-<div class="section">
-    <h1>Contact Homeolinks Homeopathic Clinic in Vadodara</h1>
+<div class="contact-container">
 
-    <div class="content">
+    <div class="hero-section">
+
+        <h1>
+            Contact Homeolinks Homeopathic Clinic in Vadodara
+        </h1>
+
         <p>
-            Get in touch with Homeolinks Homeopathic Clinic for personalized homeopathic consultation.
-            We offer both online and in-clinic appointments.
+            Get in touch with Homeolinks Homeopathic Clinic for personalized homeopathic consultation and holistic healthcare in Vadodara. We offer both in-clinic and online consultations for acute and chronic health conditions.
         </p>
-    </div>
-</div>
-
-<!-- CONTACT DETAILS -->
-<div class="section">
-
-    <h2>Clinic Contact Details</h2>
-
-    <div class="box">
-        <p><b>Clinic Name:</b> Homeolinks Homeopathic Clinic</p>
-
-        <p><b>Doctor:</b> Dr. Kartik Aswani</p>
-
-        <p><b>Address:</b> FF-9, Amar complex, Sama Road, Near Navrachana school circle, Vadodara, Gujarat, India</p>
-
-        <p><b>Phone:</b> +91-9313575730</p>
-
-        <p><b>Email:</b> homeolinks@gmail.com</p>
-
-        <p><b>Timings:</b><br>
-        Monday to Saturday<br>
-        10:00 AM – 1:00 PM<br>
-        5:30 PM – 8:30 PM</p>
-    </div>
-
-</div>
-
-<!-- GOOGLE MAP -->
-<div class="section">
-
-    <h2>Find Us on Map</h2>
-
-    <div class="box">
-
-        <iframe 
-            src="https://www.google.com/maps?q=Dr+Aswani+Kartik+Homeolinks+homeopathic+clinic&output=embed"
-            width="100%" 
-            height="350" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-        </iframe>
 
     </div>
 
-</div>
+    <div class="contact-grid">
 
-<!-- CTA -->
-<div class="section">
+        <div class="contact-card">
 
-    <h2>Book Your Appointment Today</h2>
+            <h2>
+                Clinic Contact Details
+            </h2>
 
-    <p>
-        Consult an experienced homeopathic doctor in Vadodara for safe and effective treatment.
-    </p>
+            <p>
+                <strong>Clinic Name:</strong><br>
+                Homeolinks Homeopathic Clinic
+            </p>
 
-    <a href="/book" style="background:#2e7d32;color:white;padding:12px 25px;text-decoration:none;">
-        Book Appointment
-    </a>
+            <p>
+                <strong>Doctor:</strong><br>
+                Dr. Kartik Aswani
+            </p>
+
+            <p>
+                <strong>Address:</strong><br>
+                FF-9, Amar Complex,<br>
+                Sama Road, Near Navrachana School Circle,<br>
+                Vadodara, Gujarat, India
+            </p>
+
+        </div>
+
+        <div class="contact-card">
+
+            <h2>
+                Appointment & Consultation
+            </h2>
+
+            <p>
+                <strong>Phone:</strong><br>
+                <a href="tel:+919313575730">
+                    +91 9313575730
+                </a>
+            </p>
+
+            <p>
+                <strong>Email:</strong><br>
+                <a href="mailto:homeolinks@gmail.com">
+                    homeolinks@gmail.com
+                </a>
+            </p>
+
+            <p>
+                <strong>Clinic Timings:</strong><br>
+                Monday to Saturday<br>
+                10:00 AM – 1:00 PM<br>
+                5:30 PM – 8:30 PM
+            </p>
+
+            <p>
+                <strong>Consultation Mode:</strong><br>
+                In-Clinic & Online Consultation Available
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="map-section">
+
+        <h2>
+            Find Us on Map
+        </h2>
+
+        <div class="map-container">
+
+            <iframe
+                src="https://maps.google.com/maps?q=Homeolinks%20Clinic%20Vadodara&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+
+        </div>
+
+    </div>
+
+    <div class="cta-section">
+
+        <h2>
+            Book Your Appointment Today
+        </h2>
+
+        <p>
+            Consult an experienced homeopathic doctor in Vadodara for safe, personalized, and holistic treatment.
+        </p>
+
+        <a href="/book" class="cta-btn">
+            Book Appointment
+        </a>
+
+    </div>
 
 </div>
 
