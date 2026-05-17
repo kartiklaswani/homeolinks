@@ -3,165 +3,288 @@
 {% block content %}
 
 <head>
-<meta name="description" content="Homeolinks Homeopathic Clinic in Vadodara offers natural and effective treatment for chronic diseases, skin issues, allergies, hormonal disorders and more.">
+<meta name="description" content="Homeolinks Homeopathic Clinic in Vadodara offers personalized homeopathic treatment for chronic diseases, skin disorders, allergies, hormonal imbalance, digestive problems, stress, asthma and more.">
 </head>
 
 <style>
 
-/* SLIDER */
-.slider {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
+body{
+    background:#f7faf8;
 }
 
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
+/* HERO SECTION */
+
+.hero{
+    position:relative;
+    height:88vh;
+    overflow:hidden;
 }
 
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity 1.5s ease-in-out;
 }
 
-.slide.active {
-    opacity: 1;
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-/* OVERLAY */
-.overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.55);
-    padding: 15px;
-    border-radius: 8px;
-    color: white;
-    text-align: center;
-    width: 90%;
+.slide.active{
+    opacity:1;
 }
 
-.overlay h1 {
-    font-size: 20px;
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.45)
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
 }
 
-.overlay p {
-    font-size: 14px;
+.hero-content{
+    max-width:850px;
+    color:white;
 }
 
-/* BUTTON */
-.btn {
-    background: #2e7d32;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-    border-radius: 5px;
+.hero-content h1{
+    font-size:54px;
+    margin-bottom:20px;
+    line-height:1.2;
+    font-weight:700;
+}
+
+.hero-content p{
+    font-size:21px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn-primary{
+    background:#2e7d32;
+    color:white;
+    padding:15px 32px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover{
+    background:#1b5e20;
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:white;
+    color:#1b5e20;
+    padding:15px 32px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-secondary:hover{
+    transform:translateY(-3px);
 }
 
 /* SECTION */
-.section {
-    padding: 30px 15px;
-    text-align: center;
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 20px;
 }
 
-.section h2 {
-    color: #2e7d32;
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
 }
 
-/* GRID */
-.grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.section-title h2{
+    color:#1b5e20;
+    font-size:42px;
+    margin-bottom:18px;
 }
 
-/* CARD */
-.card {
-    width: 90%;
-    margin: 10px 0;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    transition: 0.3s;
+.section-title p{
+    color:#555;
+    font-size:19px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
 }
 
-.card img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    margin-bottom: 10px;
+/* SERVICES */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+.service-card{
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(10px);
+    border-radius:24px;
+    padding:35px 28px;
+    text-decoration:none;
+    color:#333;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.35s;
+    border:1px solid rgba(255,255,255,0.4);
 }
 
-.card h3 {
-    color: #2e7d32;
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.14);
 }
 
-/* TESTIMONIAL */
-.testimonial-container {
-    max-width: 700px;
-    margin: auto;
+.service-card img{
+    width:65px;
+    height:65px;
+    margin-bottom:20px;
 }
 
-.testimonial {
-    display: none;
-    background: white;
-    padding: 20px;
-    border-left: 5px solid #2e7d32;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+.service-card h3{
+    color:#1b5e20;
+    margin-bottom:12px;
+    font-size:24px;
 }
 
-.testimonial.active {
-    display: block;
+.service-card p{
+    line-height:1.7;
+    color:#555;
 }
 
-/* DESKTOP */
-@media (min-width: 768px) {
+/* TRUST SECTION */
 
-    .slider {
-        height: 480px;
+.trust-section{
+    background:white;
+    border-radius:28px;
+    padding:60px 40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.trust-box h3{
+    color:#2e7d32;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.trust-box p{
+    color:#555;
+    font-size:18px;
+}
+
+/* TESTIMONIALS */
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.testimonial-card{
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    line-height:1.8;
+}
+
+.testimonial-card p{
+    color:#444;
+    font-size:17px;
+}
+
+.testimonial-card h4{
+    margin-top:20px;
+    color:#2e7d32;
+}
+
+/* CTA */
+
+.cta-section{
+    background:linear-gradient(to right,#1b5e20,#2e7d32);
+    color:white;
+    text-align:center;
+    padding:80px 30px;
+    border-radius:30px;
+}
+
+.cta-section h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta-section p{
+    font-size:20px;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero{
+        height:75vh;
     }
 
-    .overlay h1 {
-        font-size: 32px;
+    .hero-content h1{
+        font-size:34px;
     }
 
-    .overlay p {
-        font-size: 18px;
+    .hero-content p{
+        font-size:17px;
     }
 
-    .grid {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+    .section{
+        padding:70px 18px;
     }
 
-    .card {
-        width: 260px;
-        margin: 10px;
+    .section-title h2{
+        font-size:32px;
     }
+
+    .cta-section h2{
+        font-size:32px;
+    }
+
 }
 
 </style>
 
-<!-- SLIDER -->
-<div class="slider">
+<!-- HERO -->
+
+<section class="hero">
 
     <div class="slide active">
         <img src="/static/images/hero1.webp">
@@ -175,144 +298,243 @@
         <img src="/static/images/hero3.webp">
     </div>
 
-    <div class="overlay">
-        <h1>Trusted Homeopathic Clinic in Vadodara</h1>
-        <p>Safe • Gentle • Effective Healing Since 2002</p>
-        <a href="/book" class="btn">Book Appointment</a>
+    <div class="hero-overlay">
+
+        <div class="hero-content">
+
+            <h1>
+                Personalized Homeopathic Care in Vadodara Since 2002
+            </h1>
+
+            <p>
+                Safe, gentle, and holistic treatment for chronic and acute health conditions with individualized homeopathic care by Dr. Kartik Aswani.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/book" class="btn-primary">
+                    Book Appointment
+                </a>
+
+                <a href="/about" class="btn-secondary">
+                    About Clinic
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
 
-</div>
+</section>
 
 <!-- INTRO -->
-<div class="section">
-    <h2>Natural Healing with Personalized Care</h2>
-    <p>We treat the root cause of disease with safe and effective homeopathy.</p>
-</div>
 
-<!-- CONDITIONS -->
-<div class="section">
-    <h2>Conditions We Treat</h2>
+<section class="section">
 
-    <div class="grid">
+    <div class="section-title">
 
-        <a href="/blog/acne-blog" class="card">
+        <h2>
+            Natural Healing with Personalized Attention
+        </h2>
+
+        <p>
+            At Homeolinks Homeopathic Clinic, every patient receives individualized treatment focused on restoring health naturally through classical homeopathic principles and holistic care.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            Conditions We Treat
+        </h2>
+
+        <p>
+            Comprehensive homeopathic care for chronic diseases, allergies, hormonal imbalance, respiratory conditions, digestive disorders, emotional wellness, and more.
+        </p>
+
+    </div>
+
+    <div class="services-grid">
+
+        <a href="/blog/acne-blog" class="service-card">
             <img src="/static/images/skin.webp">
             <h3>Skin Diseases</h3>
-            <p>Acne, eczema, psoriasis</p>
+            <p>Acne, eczema, psoriasis and chronic skin allergies.</p>
         </a>
 
-        <a href="/blog/allergy-blog" class="card">
+        <a href="/blog/allergy-blog" class="service-card">
             <img src="/static/images/allergy.webp">
             <h3>Allergies</h3>
-            <p>Sinus, asthma</p>
+            <p>Sinus allergy, dust allergy, allergic asthma and respiratory sensitivity.</p>
         </a>
 
-        <a href="/blog/arthritis-blog" class="card">
+        <a href="/blog/arthritis-blog" class="service-card">
             <img src="/static/images/joint.webp">
-            <h3>Joint Pain</h3>
-            <p>Arthritis, back pain</p>
+            <h3>Joint & Spine Care</h3>
+            <p>Arthritis, cervical pain, back pain, sciatica and stiffness.</p>
         </a>
 
-        <a href="/blog/pcos-blog" class="card">
+        <a href="/blog/pcos-blog" class="service-card">
             <img src="/static/images/hormone.webp">
-            <h3>Hormonal Issues</h3>
-            <p>PCOS, thyroid</p>
+            <h3>Hormonal Disorders</h3>
+            <p>PCOS, thyroid imbalance, menstrual disorders and hormonal wellness.</p>
         </a>
 
-        <a href="/blog/acidity-blog" class="card">
+        <a href="/blog/acidity-blog" class="service-card">
             <img src="/static/images/digestive.webp">
-            <h3>Digestive Issues</h3>
-            <p>Acidity, IBS</p>
+            <h3>Digestive Disorders</h3>
+            <p>Acidity, IBS, constipation, bloating and digestive imbalance.</p>
         </a>
 
-        <a href="/blog/anxiety-blog" class="card">
+        <a href="/blog/anxiety-blog" class="service-card">
             <img src="/static/images/stress.webp">
             <h3>Stress & Anxiety</h3>
-            <p>Sleep, anxiety</p>
+            <p>Emotional wellness, sleep problems, anxiety and stress management.</p>
         </a>
 
-        <a href="/blog/children-blog" class="card">
+        <a href="/blog/children-blog" class="service-card">
             <img src="/static/images/child.webp">
-            <h3>Children’s Diseases</h3>
-            <p>Safe care for kids</p>
+            <h3>Children’s Care</h3>
+            <p>Immunity support, allergies, recurrent infections and holistic child care.</p>
         </a>
 
     </div>
-</div>
 
-<!-- BENEFITS -->
-<div class="section">
-    <h2>Why Choose Homeopathy?</h2>
+</section>
 
-    <ul style="list-style:none;">
-        <li>✔ No side effects</li>
-        <li>✔ Safe for all ages</li>
-        <li>✔ Treats root cause</li>
-        <li>✔ Long-term healing</li>
-    </ul>
-</div>
+<!-- TRUST -->
 
-<!-- TESTIMONIAL -->
-<div class="section">
-    <h2>What Our Patients Say</h2>
+<section class="section">
 
-    <div class="testimonial-container">
+    <div class="trust-section">
 
-        <div class="testimonial active">
-            <p>“I had chronic skin issues and saw major improvement.”</p>
-        </div>
+        <div class="trust-grid">
 
-        <div class="testimonial">
-            <p>“My joint pain reduced and I feel active again.”</p>
-        </div>
+            <div class="trust-box">
+                <h3>20+</h3>
+                <p>Years of Clinical Experience</p>
+            </div>
 
-        <div class="testimonial">
-            <p>“PCOS improved naturally with homeopathy.”</p>
+            <div class="trust-box">
+                <h3>2002</h3>
+                <p>Serving Vadodara Since</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Holistic</h3>
+                <p>Personalized Constitutional Care</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Safe</h3>
+                <p>Gentle Treatment for All Ages</p>
+            </div>
+
         </div>
 
     </div>
-</div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            What Our Patients Say
+        </h2>
+
+        <p>
+            Trusted by patients seeking compassionate and individualized homeopathic care in Vadodara.
+        </p>
+
+    </div>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+            <p>
+                “I had chronic skin issues for years and saw remarkable improvement with personalized treatment.”
+            </p>
+            <h4>— Patient, Vadodara</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>
+                “My joint pain reduced significantly and I feel much more active and comfortable.”
+            </p>
+            <h4>— Patient, Vadodara</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>
+                “Excellent guidance and caring approach. My stress and sleep issues improved naturally.”
+            </p>
+            <h4>— Patient, Vadodara</h4>
+        </div>
+
+    </div>
+
+</section>
 
 <!-- CTA -->
-<div class="section">
-    <h2>Start Your Healing Journey Today</h2>
-    <a href="/book" class="btn">Book Appointment</a>
-</div>
+
+<section class="section">
+
+    <div class="cta-section">
+
+        <h2>
+            Begin Your Healing Journey Today
+        </h2>
+
+        <p>
+            Experience safe, personalized, and holistic homeopathic treatment with compassionate care at Homeolinks Clinic.
+        </p>
+
+        <a href="/book" class="btn-secondary">
+            Book Appointment
+        </a>
+
+    </div>
+
+</section>
 
 <!-- SLIDER SCRIPT -->
+
 <script>
+
 let slides = document.querySelectorAll(".slide");
-let index = 0;
+let currentSlide = 0;
 
-function showSlides() {
-    slides.forEach(s => s.classList.remove("active"));
+function showSlides(){
 
-    index++;
-    if (index >= slides.length) index = 0;
+    slides.forEach(slide => {
+        slide.classList.remove("active");
+    });
 
-    slides[index].classList.add("active");
+    currentSlide++;
 
-    setTimeout(showSlides, 4000);
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add("active");
+
+    setTimeout(showSlides, 5000);
 }
-setTimeout(showSlides, 4000);
-</script>
 
-<!-- TESTIMONIAL SCRIPT -->
-<script>
-let tIndex = 0;
-let testimonials = document.querySelectorAll(".testimonial");
+setTimeout(showSlides, 5000);
 
-function showTestimonials() {
-    testimonials.forEach(t => t.classList.remove("active"));
-
-    tIndex++;
-    if (tIndex >= testimonials.length) tIndex = 0;
-
-    testimonials[tIndex].classList.add("active");
-
-    setTimeout(showTestimonials, 4000);
-}
-setTimeout(showTestimonials, 4000);
 </script>
 
 {% endblock %}
