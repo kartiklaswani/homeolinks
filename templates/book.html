@@ -3,141 +3,358 @@
 {% block content %}
 
 <head>
-<meta name="description" content="Book homeopathy appointment in Vadodara with Homeolinks Clinic. Choose your convenient time slot for consultation.">
+<meta name="description" content="Book homeopathic appointment in Vadodara with Homeolinks Homeopathic Clinic. Schedule your consultation with Dr. Kartik Aswani for personalized holistic healthcare.">
 </head>
 
 <style>
 
-.container-box {
-    max-width: 500px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-radius: 10px;
+body{
+    background:#f7faf8;
 }
 
-.container-box h1 {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 20px;
+/* HERO */
+
+.hero-section{
+    background:linear-gradient(to right,#f1f8f4,#ffffff);
+    padding:90px 20px;
+    text-align:center;
+    border-radius:0 0 40px 40px;
+}
+
+.hero-section h1{
+    color:#1b5e20;
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.hero-section p{
+    color:#555;
+    font-size:20px;
+    line-height:1.9;
+    max-width:850px;
+    margin:auto;
+}
+
+/* MAIN SECTION */
+
+.booking-section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:start;
+}
+
+/* INFO CARD */
+
+.info-card{
+    background:white;
+    padding:45px;
+    border-radius:28px;
+    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+}
+
+.info-card h2{
+    color:#1b5e20;
+    font-size:36px;
+    margin-bottom:25px;
+}
+
+.info-card p{
+    color:#555;
+    line-height:1.9;
+    font-size:17px;
+    margin-bottom:20px;
+}
+
+.info-list{
+    margin-top:30px;
+}
+
+.info-list div{
+    margin-bottom:18px;
+    color:#444;
+    font-size:17px;
+}
+
+/* FORM CARD */
+
+.form-card{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    padding:45px;
+    border-radius:30px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.10);
+    border:1px solid rgba(255,255,255,0.5);
+}
+
+.form-card h2{
+    text-align:center;
+    color:#1b5e20;
+    margin-bottom:35px;
+    font-size:38px;
 }
 
 /* FORM */
-.form-group {
-    margin-bottom: 15px;
+
+.form-group{
+    margin-bottom:22px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#333;
+    font-size:15px;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
+input,
+textarea{
+    width:100%;
+    padding:16px;
+    border:1px solid #d6e5d8;
+    border-radius:14px;
+    font-size:15px;
+    transition:0.3s;
+    background:#fafdfb;
 }
 
-input:focus, textarea:focus {
-    border-color: #2e7d32;
-    outline: none;
-}
-
-/* BUTTON */
-button {
-    width: 100%;
-    background: #2e7d32;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #1b5e20;
+input:focus,
+textarea:focus{
+    border-color:#2e7d32;
+    outline:none;
+    box-shadow:0 0 0 4px rgba(46,125,50,0.12);
 }
 
 /* SLOT BOX */
-.slots {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 10px;
+
+.slots{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:15px;
 }
 
-.slot {
-    padding: 8px 12px;
-    margin: 5px;
-    border: 1px solid #2e7d32;
-    border-radius: 5px;
-    cursor: pointer;
+.slot{
+    padding:12px 18px;
+    border:1px solid #2e7d32;
+    border-radius:50px;
+    cursor:pointer;
+    transition:0.3s;
+    color:#1b5e20;
+    font-weight:500;
+    background:white;
 }
 
-.slot:hover {
-    background: #2e7d32;
-    color: white;
+.slot:hover{
+    background:#2e7d32;
+    color:white;
 }
 
-.selected {
-    background: #2e7d32;
-    color: white;
+.selected{
+    background:#2e7d32;
+    color:white;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    background:linear-gradient(to right,#1b5e20,#2e7d32);
+    color:white;
+    padding:16px;
+    border:none;
+    border-radius:50px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:10px;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* TRUST */
+
+.trust-note{
+    margin-top:25px;
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    line-height:1.7;
 }
 
 /* MOBILE */
-@media (max-width: 600px) {
-    .container-box {
-        width: 90%;
+
+@media(max-width:900px){
+
+    .booking-section{
+        grid-template-columns:1fr;
     }
+
+}
+
+@media(max-width:768px){
+
+    .hero-section{
+        padding:70px 20px;
+    }
+
+    .hero-section h1{
+        font-size:36px;
+    }
+
+    .hero-section p{
+        font-size:17px;
+    }
+
+    .form-card,
+    .info-card{
+        padding:30px;
+    }
+
+    .form-card h2{
+        font-size:30px;
+    }
+
+    .info-card h2{
+        font-size:30px;
+    }
+
 }
 
 </style>
 
-<div class="section">
+<!-- HERO -->
 
-<div class="container-box">
+<section class="hero-section">
 
-<h1>Book Appointment</h1>
+    <h1>
+        Book Your Appointment
+    </h1>
 
-<form method="POST" action="/book">
+    <p>
+        Schedule your personalized consultation at Homeolinks Homeopathic Clinic in Vadodara for holistic, compassionate, and individualized healthcare with Dr. Kartik Aswani.
+    </p>
 
-<div class="form-group">
-<label>Name</label>
-<input type="text" name="name" required>
-</div>
+</section>
 
-<div class="form-group">
-<label>Phone Number</label>
-<input type="text" name="phone" required>
-</div>
+<!-- BOOKING SECTION -->
 
-<div class="form-group">
-<label>Select Date</label>
-<input type="date" name="date" id="date" required onchange="checkSunday()">
-</div>
+<section class="booking-section">
 
-<div class="form-group">
-<label>Select Time Slot</label>
-<div class="slots" id="slots"></div>
-<input type="hidden" name="time" id="time">
-</div>
+    <!-- LEFT INFO -->
 
-<div class="form-group">
-<label>Message (Optional)</label>
-<textarea name="message"></textarea>
-</div>
+    <div class="info-card">
 
-<button type="submit">Confirm Appointment</button>
+        <h2>
+            Personalized Homeopathic Consultation
+        </h2>
 
-</form>
+        <p>
+            Every patient at Homeolinks Clinic receives detailed case evaluation and individualized treatment planning focused on long-term healing and holistic wellness.
+        </p>
 
-</div>
+        <p>
+            Consultations are available for chronic diseases, skin disorders, allergies, thyroid imbalance, digestive problems, respiratory conditions, stress-related disorders, hormonal imbalance, and children’s health concerns.
+        </p>
 
-</div>
+        <div class="info-list">
+
+            <div>✔ Practising Since 2002</div>
+            <div>✔ Personalized Constitutional Treatment</div>
+            <div>✔ Safe & Gentle Homeopathic Care</div>
+            <div>✔ Online & In-Clinic Consultation</div>
+            <div>✔ Trusted Homeopathic Clinic in Vadodara</div>
+
+        </div>
+
+    </div>
+
+    <!-- FORM -->
+
+    <div class="form-card">
+
+        <h2>
+            Schedule Consultation
+        </h2>
+
+        <form method="POST" action="/book">
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input type="text" name="name" required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input type="text" name="phone" required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Select Date</label>
+
+                <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    required
+                    onchange="checkSunday()"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Select Time Slot</label>
+
+                <div class="slots" id="slots"></div>
+
+                <input type="hidden" name="time" id="time">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Message (Optional)</label>
+
+                <textarea
+                    name="message"
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+            <button type="submit">
+                Confirm Appointment
+            </button>
+
+            <div class="trust-note">
+
+                Your information remains private and confidential.
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- SCRIPT -->
 
 <script>
 
@@ -150,27 +367,37 @@ document.getElementById("date").addEventListener("change", function() {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({date: date})
     })
+
     .then(res => res.json())
+
     .then(data => {
 
         let slotsDiv = document.getElementById("slots");
+
         slotsDiv.innerHTML = "";
 
         data.forEach(slot => {
 
             let div = document.createElement("div");
+
             div.className = "slot";
+
             div.innerText = slot;
 
             div.onclick = function() {
 
-                document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
+                document.querySelectorAll(".slot").forEach(s => {
+                    s.classList.remove("selected");
+                });
+
                 div.classList.add("selected");
 
                 document.getElementById("time").value = slot;
+
             };
 
             slotsDiv.appendChild(div);
+
         });
 
     });
@@ -178,22 +405,25 @@ document.getElementById("date").addEventListener("change", function() {
 });
 
 </script>
+
+<!-- SUNDAY CHECK -->
+
 <script>
 
-function checkSunday() {
+function checkSunday(){
 
     let selectedDate = document.getElementById("date").value;
 
     let day = new Date(selectedDate).getDay();
 
-    // Sunday = 0
-    if(day === 0) {
+    if(day === 0){
 
         alert("Clinic remains closed on Sundays.");
 
         document.getElementById("date").value = "";
 
     }
+
 }
 
 </script>
