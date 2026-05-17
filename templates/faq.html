@@ -3,120 +3,390 @@
 {% block content %}
 
 <head>
-    <meta name="description" content="Frequently asked questions about homeopathic treatment at Homeolinks Clinic Vadodara. Learn about safety, effectiveness, consultation process, and treatment duration.">
+<meta name="description" content="Frequently asked questions about homeopathic treatment at Homeolinks Homeopathic Clinic Vadodara. Learn about safety, treatment process, consultation, effectiveness, chronic disease management, and online consultation.">
 </head>
 
 <style>
-.section {
-    padding: 50px 20px;
-    text-align: center;
+
+body{
+    background:#f7faf8;
 }
 
-.faq-container {
-    max-width: 800px;
-    margin: auto;
-    text-align: left;
+/* HERO */
+
+.hero-section{
+    background:linear-gradient(to right,#f1f8f4,#ffffff);
+    padding:90px 20px;
+    text-align:center;
+    border-radius:0 0 40px 40px;
 }
 
-.faq {
-    background: white;
-    margin: 10px 0;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    cursor: pointer;
+.hero-section h1{
+    color:#1b5e20;
+    font-size:50px;
+    margin-bottom:20px;
 }
 
-.answer {
-    display: none;
-    padding-top: 10px;
-    color: #444;
+.hero-section p{
+    color:#555;
+    font-size:20px;
+    line-height:1.9;
+    max-width:850px;
+    margin:auto;
 }
+
+/* MAIN */
+
+.faq-wrapper{
+    max-width:1000px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+/* FAQ CARD */
+
+.faq{
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    border-radius:22px;
+    margin-bottom:22px;
+    padding:28px 30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.4);
+}
+
+.faq:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 35px rgba(0,0,0,0.12);
+}
+
+.question{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.question h3{
+    color:#1b5e20;
+    font-size:23px;
+    line-height:1.6;
+}
+
+.icon{
+    font-size:28px;
+    color:#2e7d32;
+    transition:0.3s;
+}
+
+/* ANSWER */
+
+.answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+}
+
+.answer p{
+    color:#555;
+    line-height:1.9;
+    font-size:17px;
+    margin-top:20px;
+}
+
+/* ACTIVE */
+
+.faq.active .answer{
+    max-height:300px;
+}
+
+.faq.active .icon{
+    transform:rotate(45deg);
+}
+
+/* TRUST SECTION */
+
+.trust-section{
+    background:white;
+    border-radius:28px;
+    padding:60px 40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    margin-top:40px;
+}
+
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.trust-box h3{
+    color:#2e7d32;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.trust-box p{
+    color:#555;
+    font-size:18px;
+}
+
+/* CTA */
+
+.cta-section{
+    background:linear-gradient(to right,#1b5e20,#2e7d32);
+    color:white;
+    text-align:center;
+    padding:80px 30px;
+    border-radius:30px;
+    margin-top:70px;
+}
+
+.cta-section h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta-section p{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.cta-btn{
+    background:white;
+    color:#1b5e20;
+    padding:15px 34px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:17px;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.cta-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero-section{
+        padding:70px 20px;
+    }
+
+    .hero-section h1{
+        font-size:36px;
+    }
+
+    .hero-section p{
+        font-size:17px;
+    }
+
+    .faq-wrapper{
+        padding:60px 18px;
+    }
+
+    .question h3{
+        font-size:19px;
+    }
+
+    .cta-section h2{
+        font-size:32px;
+    }
+
+}
+
 </style>
 
-<!-- TITLE -->
-<div class="section">
-    <h1>Frequently Asked Questions – Homeopathic Treatment</h1>
+<!-- HERO -->
+
+<section class="hero-section">
+
+    <h1>
+        Frequently Asked Questions About Homeopathy
+    </h1>
 
     <p>
-        Find answers to common questions about homeopathy, treatment process, and consultations at Homeolinks Clinic Vadodara.
+        Find answers to common questions about homeopathic treatment, consultation process, safety, chronic disease management, and holistic healing at Homeolinks Homeopathic Clinic in Vadodara.
     </p>
-</div>
 
-<!-- FAQ -->
-<div class="faq-container">
+</section>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>What is homeopathy and how does it work?</b>
-        <div class="answer">
-            Homeopathy is a natural system of medicine that stimulates the body’s healing ability. It treats the root cause of disease rather than just symptoms.
+<!-- FAQ SECTION -->
+
+<section class="faq-wrapper">
+
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>What is homeopathy and how does it work?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                Homeopathy is a holistic system of medicine that stimulates the body’s natural healing response. It focuses on treating the root cause of illness rather than only suppressing symptoms temporarily.
+            </p>
+        </div>
+
     </div>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>Is homeopathic treatment safe?</b>
-        <div class="answer">
-            Yes, homeopathy is completely safe and has no side effects. It is suitable for children, adults, and elderly patients.
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>Is homeopathic treatment safe?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                Homeopathic medicines are generally considered gentle and suitable for all age groups when prescribed appropriately by a qualified homeopathic doctor.
+            </p>
+        </div>
+
     </div>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>What conditions can be treated with homeopathy?</b>
-        <div class="answer">
-            Homeopathy can effectively treat chronic diseases such as skin disorders, allergies, asthma, arthritis, PCOS, thyroid issues, and stress-related conditions.
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>What conditions can be treated with homeopathy?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                Homeopathy is commonly used for chronic and recurring conditions such as allergies, skin disorders, asthma, thyroid imbalance, arthritis, PCOS, digestive problems, stress-related conditions, and children’s diseases.
+            </p>
+        </div>
+
     </div>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>How long does homeopathic treatment take?</b>
-        <div class="answer">
-            Treatment duration depends on the nature and duration of the disease. Chronic conditions may take longer, but results are long-lasting.
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>How long does homeopathic treatment take?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                Treatment duration depends on the nature, severity, and duration of the condition. Chronic diseases may require longer follow-up, while acute illnesses may respond more quickly.
+            </p>
+        </div>
+
     </div>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>Do homeopathic medicines have side effects?</b>
-        <div class="answer">
-            No, homeopathic medicines are gentle and safe, with no harmful side effects when prescribed correctly.
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>Can homeopathy be taken alongside other medicines?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                In many cases, homeopathic treatment may be taken alongside conventional treatment under proper medical guidance. Individual evaluation is important for safe and appropriate care.
+            </p>
+        </div>
+
     </div>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>Can I take homeopathy along with other medicines?</b>
-        <div class="answer">
-            Yes, homeopathy can be taken alongside conventional medicines. However, proper guidance from a qualified doctor is recommended.
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>Do you provide online consultation?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                Yes. Homeolinks Homeopathic Clinic provides both online and in-clinic consultations, allowing patients from different cities and locations to receive personalized care.
+            </p>
+        </div>
+
     </div>
 
-    <div class="faq" onclick="toggle(this)">
-        <b>Do you provide online consultation?</b>
-        <div class="answer">
-            Yes, we offer both online and in-clinic consultations, allowing patients from anywhere to receive treatment.
+    <div class="faq" onclick="toggleFAQ(this)">
+
+        <div class="question">
+            <h3>Is homeopathy useful for chronic diseases?</h3>
+            <span class="icon">+</span>
         </div>
+
+        <div class="answer">
+            <p>
+                Homeopathy is commonly sought for long-term management of chronic and recurring conditions through individualized constitutional treatment and holistic care.
+            </p>
+        </div>
+
     </div>
 
-</div>
+    <!-- TRUST -->
 
-<!-- CTA -->
-<div class="section">
-    <h2>Still have questions?</h2>
-    <p>Consult our expert homeopathic doctor in Vadodara for personalized guidance.</p>
+    <div class="trust-section">
 
-    <a href="/book" style="background:#2e7d32;color:white;padding:12px 25px;text-decoration:none;">
-        Book Appointment
-    </a>
-</div>
+        <div class="trust-grid">
+
+            <div class="trust-box">
+                <h3>20+</h3>
+                <p>Years of Clinical Experience</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>2002</h3>
+                <p>Serving Vadodara Since</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Holistic</h3>
+                <p>Personalized Constitutional Treatment</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Trusted</h3>
+                <p>Compassionate Patient-Centered Care</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+
+    <div class="cta-section">
+
+        <h2>
+            Still Have Questions?
+        </h2>
+
+        <p>
+            Consult Homeolinks Homeopathic Clinic for personalized guidance and compassionate holistic healthcare in Vadodara.
+        </p>
+
+        <a href="/book" class="cta-btn">
+            Book Appointment
+        </a>
+
+    </div>
+
+</section>
 
 <!-- SCRIPT -->
-<script>
-function toggle(element) {
-    let answer = element.querySelector(".answer");
 
-    if (answer.style.display === "block") {
-        answer.style.display = "none";
-    } else {
-        answer.style.display = "block";
-    }
+<script>
+
+function toggleFAQ(element){
+
+    element.classList.toggle("active");
+
 }
+
 </script>
 
 {% endblock %}
