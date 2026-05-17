@@ -3,138 +3,339 @@
 {% block content %}
 
 <head>
-    <meta name="description" content="Read real patient testimonials for Homeolinks Homeopathic Clinic Vadodara. Successful treatment for chronic pain, allergies, skin diseases, and long-term health conditions with homeopathy.">
+<meta name="description" content="Read patient testimonials and success stories from Homeolinks Homeopathic Clinic Vadodara. Trusted homeopathic care for allergies, chronic diseases, joint pain, respiratory issues, skin disorders, and holistic healing.">
 </head>
 
 <style>
-.section {
-    padding: 50px 20px;
-    text-align: center;
+
+body{
+    background:#f7faf8;
 }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* HERO */
+
+.hero-section{
+    background:linear-gradient(to right,#f1f8f4,#ffffff);
+    padding:90px 20px;
+    text-align:center;
+    border-radius:0 0 40px 40px;
 }
 
-.card {
-    width: 320px;
-    margin: 15px;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: left;
-    border-left: 5px solid #2e7d32;
+.hero-section h1{
+    color:#1b5e20;
+    font-size:50px;
+    margin-bottom:20px;
 }
 
-.card h4 {
-    margin-top: 10px;
-    color: #2e7d32;
+.hero-section p{
+    color:#555;
+    font-size:20px;
+    line-height:1.9;
+    max-width:900px;
+    margin:auto;
 }
 
-.card p {
-    line-height: 1.5;
+/* SECTION */
+
+.section{
+    max-width:1250px;
+    margin:auto;
+    padding:90px 20px;
 }
+
+/* TESTIMONIAL GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* PREMIUM CARD */
+
+.card{
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px);
+    border-radius:26px;
+    padding:35px;
+    box-shadow:0 12px 32px rgba(0,0,0,0.08);
+    border:1px solid rgba(255,255,255,0.5);
+    position:relative;
+    transition:0.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.14);
+}
+
+.quote{
+    font-size:70px;
+    color:#dcefdc;
+    position:absolute;
+    top:10px;
+    left:20px;
+    font-family:serif;
+}
+
+.card p{
+    color:#444;
+    line-height:1.9;
+    font-size:17px;
+    position:relative;
+    z-index:2;
+}
+
+.card h4{
+    margin-top:25px;
+    color:#2e7d32;
+    font-size:18px;
+}
+
+/* TRUST SECTION */
+
+.trust-section{
+    margin-top:70px;
+    background:white;
+    border-radius:30px;
+    padding:60px 40px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.trust-box h3{
+    color:#2e7d32;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.trust-box p{
+    color:#555;
+    font-size:18px;
+}
+
+/* CTA */
+
+.cta-section{
+    margin-top:70px;
+    background:linear-gradient(to right,#1b5e20,#2e7d32);
+    color:white;
+    text-align:center;
+    padding:85px 30px;
+    border-radius:32px;
+}
+
+.cta-section h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta-section p{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.cta-btn{
+    background:white;
+    color:#1b5e20;
+    padding:15px 34px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:17px;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.cta-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero-section{
+        padding:70px 20px;
+    }
+
+    .hero-section h1{
+        font-size:36px;
+    }
+
+    .hero-section p{
+        font-size:17px;
+    }
+
+    .section{
+        padding:70px 18px;
+    }
+
+    .cta-section h2{
+        font-size:32px;
+    }
+
+}
+
 </style>
 
-<!-- TITLE -->
-<div class="section">
-    <h1>Patient Testimonials – Homeolinks Homeopathic Clinic Vadodara</h1>
+<!-- HERO -->
+
+<section class="hero-section">
+
+    <h1>
+        Patient Testimonials & Healing Experiences
+    </h1>
 
     <p>
-        Real experiences from patients who have benefited from personalized homeopathic treatment
-        for chronic diseases, allergies, joint pain, and lifestyle conditions.
+        Read real experiences from patients who have benefited from personalized homeopathic treatment at Homeolinks Homeopathic Clinic in Vadodara for chronic diseases, allergies, joint pain, respiratory conditions, skin disorders, and holistic wellness.
     </p>
-</div>
+
+</section>
 
 <!-- TESTIMONIALS -->
-<div class="section">
+
+<section class="section">
 
     <div class="grid">
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                I had been suffering from carpal tunnel syndrome for many years and was even considering surgery.
-                After starting homeopathic treatment, my condition improved significantly within a few months.
-                I am now able to manage without other medicines. My spouse also recovered from long-standing allergies.
+                I had been suffering from carpal tunnel syndrome for many years and was even considering surgery. After starting homeopathic treatment, my condition improved significantly within a few months. I am now able to manage without other medicines. My spouse also recovered from long-standing allergies.
             </p>
-            <h4>– N.G., Vadodara</h4>
+
+            <h4>— N.G., Vadodara</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                I was dealing with severe joint pain that affected my daily life.
-                After starting treatment, I experienced major relief and now live an active, almost pain-free life.
-                Many members of my family have also benefited from the treatment.
+                I was dealing with severe joint pain that affected my daily life. After starting treatment, I experienced major relief and now live an active, almost pain-free life. Many members of my family have also benefited from the treatment.
             </p>
-            <h4>– S.B., Vadodara</h4>
+
+            <h4>— S.B., Vadodara</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                Our family has been consulting for many years.
-                Homeopathic treatment helped avoid a surgery that was otherwise considered necessary.
-                Even in our later years, we continue to maintain good health naturally.
+                Our family has been consulting for many years. Homeopathic treatment helped avoid a surgery that was otherwise considered necessary. Even in our later years, we continue to maintain good health naturally.
             </p>
-            <h4>– S.J., Vadodara</h4>
+
+            <h4>— S.J., Vadodara</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                Even while living abroad, we have received consistent support and guidance.
-                Homeopathy has been our first choice for managing common illnesses and maintaining overall health.
+                Even while living abroad, we have received consistent support and guidance. Homeopathy has been our first choice for managing common illnesses and maintaining overall health.
             </p>
-            <h4>– M.D., International Patient</h4>
+
+            <h4>— M.D., International Patient</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                A trusted doctor for our entire family for many years.
-                The treatment approach is patient, detailed, and focused on long-term healing rather than temporary relief.
+                A trusted doctor for our entire family for many years. The treatment approach is patient, detailed, and focused on long-term healing rather than temporary relief.
             </p>
-            <h4>– R.J., Vadodara</h4>
+
+            <h4>— R.J., Vadodara</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                The treatment after sinus-related issues was very effective.
-                The consultation was detailed, and the doctor was patient and approachable throughout.
+                The treatment after sinus-related issues was very effective. The consultation was detailed, and the doctor was patient and approachable throughout.
             </p>
-            <h4>– P.K., Vadodara</h4>
+
+            <h4>— P.K., Vadodara</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                My child had chronic breathing issues and required frequent medical support earlier.
-                After starting homeopathic treatment, there has been remarkable improvement and long-term relief.
+                My child had chronic breathing issues and required frequent medical support earlier. After starting homeopathic treatment, there has been remarkable improvement and long-term relief.
             </p>
-            <h4>– A.V., Parent</h4>
+
+            <h4>— A.V., Parent</h4>
         </div>
 
         <div class="card">
+            <div class="quote">“</div>
+
             <p>
-                Our family has relied on homeopathic treatment for many years.
-                Chronic conditions like fever, allergies, and skin issues have been effectively managed with long-lasting results.
+                Our family has relied on homeopathic treatment for many years. Chronic conditions like fever, allergies, and skin issues have been effectively managed with long-lasting results.
             </p>
-            <h4>– R.M., Vadodara</h4>
+
+            <h4>— R.M., Vadodara</h4>
         </div>
 
     </div>
 
-</div>
+    <!-- TRUST SECTION -->
 
-<!-- CTA -->
-<div class="section">
-    <h2>Experience Natural & Long-Term Healing</h2>
+    <div class="trust-section">
 
-    <p>
-        Consult an experienced homeopathic doctor in Vadodara and begin your journey toward better health.
-    </p>
+        <div class="trust-grid">
 
-    <a href="/book" style="background:#2e7d32;color:white;padding:12px 25px;text-decoration:none;">
-        Book Appointment
-    </a>
-</div>
+            <div class="trust-box">
+                <h3>20+</h3>
+                <p>Years of Clinical Experience</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>2002</h3>
+                <p>Serving Vadodara Since</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Holistic</h3>
+                <p>Personalized Constitutional Treatment</p>
+            </div>
+
+            <div class="trust-box">
+                <h3>Trusted</h3>
+                <p>Long-Term Patient Relationships</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+
+    <div class="cta-section">
+
+        <h2>
+            Experience Natural & Long-Term Healing
+        </h2>
+
+        <p>
+            Consult Homeolinks Homeopathic Clinic in Vadodara for compassionate, personalized, and holistic healthcare focused on long-term wellness.
+        </p>
+
+        <a href="/book" class="cta-btn">
+            Book Appointment
+        </a>
+
+    </div>
+
+</section>
 
 {% endblock %}
