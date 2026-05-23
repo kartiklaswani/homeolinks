@@ -420,15 +420,104 @@ Homeolinks Clinic
     whatsapp_url = f"https://wa.me/91{phone}?text={encoded_message}"
 
     return redirect(whatsapp_url)
-    
-@app.route('/sitemap.xml')
-def sitemap():
-    return app.send_static_file('sitemap.xml')
-
 
 @app.route('/robots.txt')
 def robots():
-    return app.send_static_file('robots.txt')
+    return """
+User-agent: *
+Allow: /
+
+Sitemap: https://www.homeolinks.in/sitemap.xml
+""", 200, {'Content-Type': 'text/plain'}
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+
+    sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+<loc>https://www.homeolinks.in/</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/about</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/services</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/contact</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/faq</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/testimonials</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/book</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/acne-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/allergy-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/arthritis-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/pcos-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/acidity-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/anxiety-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/children-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/thyroid-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/hairfall-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/eczema-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/asthma-blog</loc>
+</url>
+
+<url>
+<loc>https://www.homeolinks.in/blog/periods-blog</loc>
+</url>
+
+</urlset>
+"""
+
+    return sitemap_xml, 200, {'Content-Type': 'application/xml'}
     
 # ---------------- RUN ----------------
 if __name__ == "__main__":
