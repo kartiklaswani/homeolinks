@@ -420,7 +420,15 @@ Homeolinks Clinic
     whatsapp_url = f"https://wa.me/91{phone}?text={encoded_message}"
 
     return redirect(whatsapp_url)
+@app.route('/sitemap.xml')
+def sitemap():
+    return app.send_static_file('sitemap.xml')
 
+
+@app.route('/robots.txt')
+def robots():
+    return app.send_static_file('robots.txt')
+    
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
