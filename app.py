@@ -519,9 +519,9 @@ def sitemap():
 
     return sitemap_xml, 200, {'Content-Type': 'application/xml'}
 
-@app.route('/templates/google21c533c900d305ee.html')
+@app.route('/google21c533c900d305ee.html')
 def google_verify():
-    return render_template('templates/google21c533c900d305ee.html')    
+    return render_template('google21c533c900d305ee.html')    
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
