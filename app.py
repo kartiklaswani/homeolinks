@@ -125,6 +125,7 @@ def book():
         date = request.form['date']
         time = request.form['time']
         message = request.form['message']
+
         telegram_message = f"""
         📢 New Appointment Booking
 
@@ -141,7 +142,7 @@ def book():
         — Homeolinks Website
         """
 
-        telegram_url = f"https://api.telegram.org/bot{8931605522:AAGamxwdmBX9g8_XPSYXTOcFXVoHcHx8no4}/sendMessage"
+        telegram_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
 
         requests.post(
             telegram_url,
@@ -150,6 +151,7 @@ def book():
                 "text": telegram_message
             }
         )
+
         today = datetime.now().strftime("%Y-%m-%d")
         now = datetime.now().strftime("%H:%M")
 
