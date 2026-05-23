@@ -517,8 +517,12 @@ def sitemap():
 </urlset>
 """
 
-    return sitemap_xml, 200, {'Content-Type': 'application/xml'}
+    response = app.response_class(
+        sitemap_xml,
+        mimetype='application/xml'
+    )
 
+    return response
 @app.route('/google21c533c900d305ee.html')
 def google_verify():
     return render_template('google21c533c900d305ee.html')    
