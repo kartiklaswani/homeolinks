@@ -3,6 +3,10 @@ from datetime import datetime
 import psycopg2
 from urllib.parse import urlparse
 import os
+import requests
+TELEGRAM_BOT_TOKEN = "8931605522:AAGamxwdmBX9g8_XPSYXTOcFXVoHcHx8no4"
+
+TELEGRAM_CHAT_ID = "8942704437"
 
 app = Flask(__name__)
 app.secret_key = "homeolinks_secret_key"
@@ -121,7 +125,31 @@ def book():
         date = request.form['date']
         time = request.form['time']
         message = request.form['message']
+        telegram_message = f"""
+        📢 New Appointment Booking
 
+        👤 Name: {name}
+
+        📞 Phone: {phone}
+
+        📅 Date: {date}
+
+        ⏰ Time: {time}
+
+        📝 Message: {message}
+
+        — Homeolinks Website
+        """
+
+        telegram_url = f"https://api.telegram.org/bot{8931605522:AAGamxwdmBX9g8_XPSYXTOcFXVoHcHx8no4}/sendMessage"
+
+        requests.post(
+            telegram_url,
+            data={
+                "chat_id": TELEGRAM_CHAT_ID,
+                "text": telegram_message
+            }
+        )
         today = datetime.now().strftime("%Y-%m-%d")
         now = datetime.now().strftime("%H:%M")
 
