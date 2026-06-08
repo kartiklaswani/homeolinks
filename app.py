@@ -76,7 +76,10 @@ def init_db():
     conn.close()
 
 
-init_db()
+try:
+    init_db()
+except:
+    print("Database unavailable - starting without database")
 
 # ---------------- WEBSITE ----------------
 @app.route('/')
