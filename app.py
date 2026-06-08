@@ -3,6 +3,7 @@ from datetime import datetime
 import psycopg2
 from urllib.parse import urlparse
 import os
+import json
 import gspread
 from google.oauth2.service_account import Credentials
 import requests
@@ -14,8 +15,12 @@ try:
         "https://www.googleapis.com/auth/spreadsheets"
     ]
 
-    creds = Credentials.from_service_account_file(
-        "homeolinks-appointments-f180a19f0738.json",
+    credentials_info = json.loads(
+        os.environ["GOOGLE_CREDENTIALS"]
+    )
+
+    creds = Credentials.from_service_account_info(
+        credentials_info,
         scopes=SCOPES
     )
 
@@ -26,6 +31,7 @@ try:
 except Exception as e:
     print("Google Sheets unavailable:", e)
     sheet = None
+
 
 TELEGRAM_BOT_TOKEN = "8931605522:AAGamxwdmBX9g8_XPSYXTOcFXVoHcHx8no4"
 
