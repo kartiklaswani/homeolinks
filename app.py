@@ -173,40 +173,6 @@ def book():
             return "Cannot book past time"
             
 
-        conn = get_db_connection()
-        c = conn.cursor()
-
-        # CHECK IF SLOT ALREADY BOOKED
-        c.execute(
-            "SELECT * FROM appointments WHERE date=%s AND time=%s",
-            (date, time)
-        )
-
-        existing_appointment = c.fetchone()
-
-        if existing_appointment:
-            conn.close()
-
-            return """
-            <h2 style='color:red; text-align:center; margin-top:50px;'>
-            Sorry, this appointment slot is already booked.
-            Please choose another time.
-            </h2>
-            """
-
-        # SAVE NEW APPOINTMENT
-        c.execute(
-            """
-            INSERT INTO appointments
-            (name, phone, date, time, message)
-            VALUES (%s, %s, %s, %s, %s)
-            """,
-            (name, phone, date, time, message)
-        )
-
-        conn.commit()
-        conn.close()
-
         return render_template(
             "confirmation.html",
             name=name,
@@ -221,9 +187,6 @@ def book():
 # ---------------- TIME SLOTS ----------------
 @app.route('/get_slots', methods=['POST'])
 def get_slots():
-
-    data = request.get_json()
-    date = data['date']
 
     slots = []
 
@@ -242,22 +205,7 @@ def get_slots():
     # Last slot
     slots.append("20:00")
 
-    conn = get_db_connection()
-    c = conn.cursor()
-
-    c.execute(
-        "SELECT time FROM appointments WHERE date=%s",
-        (date,)
-    )
-
-    booked = [x[0] for x in c.fetchall()]
-
-    conn.close()
-
-    available = [s for s in slots if s not in booked]
-
-    return jsonify(available)
-
+    return jsonify(slots)
 
 # ---------------- ADMIN LOGIN ----------------
 @app.route('/admin-login', methods=['GET', 'POST'])
