@@ -111,15 +111,16 @@ except:
 # ---------------- WEBSITE ----------------
 @app.route('/test-sheet')
 def test_sheet():
+
     if isinstance(sheet, str):
         return f"Google Sheets startup error: {sheet}"
+
+    if sheet is None:
+        return "Google Sheets not connected"
 
     records = sheet.get_all_values()
 
     return f"Connected successfully. Rows found: {len(records)}"
-    
-    except Exception as e:
-        return f"Google Sheets Error: {str(e)}"
 
 @app.route('/')
 def home():
