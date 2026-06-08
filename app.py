@@ -29,8 +29,7 @@ try:
     sheet = client.open("Homeolinks Appointments").sheet1
 
 except Exception as e:
-    print("Google Sheets unavailable:", repr(e))
-    sheet = None
+    sheet = str(e)
 
 TELEGRAM_BOT_TOKEN = "8931605522:AAGamxwdmBX9g8_XPSYXTOcFXVoHcHx8no4"
 
@@ -112,11 +111,13 @@ except:
 # ---------------- WEBSITE ----------------
 @app.route('/test-sheet')
 def test_sheet():
+    if isinstance(sheet, str):
+        return f"Google Sheets startup error: {sheet}"
 
-    try:
-        records = sheet.get_all_values()
-        return f"Connected successfully. Rows found: {len(records)}"
+    records = sheet.get_all_values()
 
+    return f"Connected successfully. Rows found: {len(records)}"
+    
     except Exception as e:
         return f"Google Sheets Error: {str(e)}"
 
