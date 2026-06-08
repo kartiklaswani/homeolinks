@@ -15,7 +15,7 @@ try:
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
     ]
-    
+
     credentials_info = json.loads(
         os.environ["GOOGLE_CREDENTIALS"]
     )
@@ -212,7 +212,16 @@ def book():
 
         if date == today and time <= now:
             return "Cannot book past time"
-            
+
+        # SAVE TO GOOGLE SHEETS
+
+        sheet.append_row([
+            date,
+            time,
+            name,
+            phone,
+            message
+        ])    
 
         return render_template(
             "confirmation.html",
@@ -228,6 +237,9 @@ def book():
 # ---------------- TIME SLOTS ----------------
 @app.route('/get_slots', methods=['POST'])
 def get_slots():
+
+    data = request.get_json()
+    date = data['date']
 
     slots = []
 
@@ -246,7 +258,25 @@ def get_slots():
     # Last slot
     slots.append("20:00")
 
-    return jsonify(slots)
+    # READ BOOKINGS FROM GOOGLE SHEETS
+
+    records = sheet.get_all_values()
+
+    booked = []
+
+    for row in records[1:]:  # skip header row
+
+        if len(row) >= 2:
+
+            booked_date = row[0]
+            booked_time = row[1]
+
+            if booked_date == date:
+                booked.append(booked_time)
+
+    available = [s for s in slots if s not in booked]
+
+    return jsonify(available)
 
 # ---------------- ADMIN LOGIN ----------------
 @app.route('/admin-login', methods=['GET', 'POST'])
