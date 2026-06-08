@@ -3,7 +3,25 @@ from datetime import datetime
 import psycopg2
 from urllib.parse import urlparse
 import os
+import gspread
+from google.oauth2.service_account import Credentials
 import requests
+
+# ---------------- GOOGLE SHEETS ----------------
+
+SCOPES = [
+    "https://www.googleapis.com/auth/spreadsheets"
+]
+
+creds = Credentials.from_service_account_file(
+    "homeolinks-appointments-f180a19f0738.json",
+    scopes=SCOPES
+)
+
+client = gspread.authorize(creds)
+
+sheet = client.open("Homeolinks Appointments").sheet1
+
 TELEGRAM_BOT_TOKEN = "8931605522:AAGamxwdmBX9g8_XPSYXTOcFXVoHcHx8no4"
 
 TELEGRAM_CHAT_ID = "8942704437"
@@ -82,6 +100,14 @@ except:
     print("Database unavailable - starting without database")
 
 # ---------------- WEBSITE ----------------
+@app.route('/test-sheet')
+def test_sheet():
+
+    records = sheet.get_all_values()
+
+    return f"Connected successfully. Rows found: {len(records)}"
+
+
 @app.route('/')
 def home():
     return render_template('home.html')
