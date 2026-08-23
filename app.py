@@ -308,58 +308,56 @@ def admin():
     if not session.get('admin_logged_in'):
         return redirect('/admin-login')
 
-    conn = get_db_connection()
-    c = conn.cursor()
+    records = sheet.get_all_values()
 
-    c.execute("""
-        SELECT * FROM appointments
-        ORDER BY date ASC, time ASC
-    """)
+    appointments = []
 
-    appointments = c.fetchall()
+    # Skip header row
+    for row_number, row in enumerate(records[1:], start=2):
 
-    conn.close()
+        if len(row) >= 5:
+
+            appointments.append({
+                "row_number": row_number,
+                "date": row[0],
+                "time": row[1],
+                "name": row[2],
+                "phone": row[3],
+                "message": row[4]
+            })
+
+    # Sort appointments by date and time
+    appointments.sort(
+        key=lambda x: (x["date"], x["time"])
+    )
 
     return render_template(
         'admin.html',
         appointments=appointments
     )
 
-
 # ---------------- DELETE APPOINTMENT ----------------
-@app.route('/delete_appointment/<int:id>')
-def delete_appointment(id):
+@app.route('/delete_appointment/<int:row_number>')
+def delete_appointment(row_number):
 
-    conn = get_db_connection()
-    c = conn.cursor()
+    records = sheet.get_all_values()
 
-    # Get appointment details BEFORE deleting
-    c.execute(
-        "SELECT name, phone, date, time FROM appointments WHERE id=%s",
-        (id,)
-    )
-
-    appointment = c.fetchone()
-
-    if not appointment:
-        conn.close()
+    # Make sure the requested row actually exists
+    if row_number < 2 or row_number > len(records):
         return redirect('/admin')
 
-    name = appointment[0]
-    phone = appointment[1]
-    date = appointment[2]
-    time = appointment[3]
+    # Get appointment details before deleting
+    appointment = records[row_number - 1]
 
-    # Delete appointment
-    c.execute(
-        "DELETE FROM appointments WHERE id=%s",
-        (id,)
-    )
+    date = appointment[0]
+    time = appointment[1]
+    name = appointment[2]
+    phone = appointment[3]
 
-    conn.commit()
-    conn.close()
+    # Delete the appointment from Google Sheets
+    sheet.delete_rows(row_number)
 
-    # WhatsApp message
+    # WhatsApp cancellation message
     message = f'''
 Dear {name},
 
@@ -375,16 +373,13 @@ Please contact clinic for rescheduling, or book another slot. Sorry for the inco
 Homeolinks Clinic
 '''
 
-    # Remove spaces/special characters
     import urllib.parse
 
     encoded_message = urllib.parse.quote(message)
 
-    # Open WhatsApp
     whatsapp_url = f"https://wa.me/91{phone}?text={encoded_message}"
 
     return redirect(whatsapp_url)
-
 
 # ---------------- LOGOUT ----------------
 @app.route('/logout')

@@ -56,11 +56,10 @@ th{
     <table>
 
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Phone</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Name</th>
+            <th>Phone</th>
             <th>Message</th>
             <th>Action</th>
         </tr>
@@ -74,11 +73,10 @@ th{
             <td>{{ a[2] }}</td>
             <td>{{ a[3] }}</td>
             <td>{{ a[4] }}</td>
-            <td>{{ a[5] }}</td>
 
             <td>
                 <a
-                    href="/delete_appointment/{{ a[0] }}"
+                    href="/delete_appointment/{{ loop.index0 }}"
                     class="delete-btn"
                     onclick="return confirm('Delete this appointment?')"
                 >
